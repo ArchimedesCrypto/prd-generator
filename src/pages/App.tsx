@@ -153,15 +153,23 @@ const AppPage = () => {
           <div className="flex items-center gap-6">
             <h1 className="text-2xl md:text-3xl font-bold tracking-wider">Deepwriter AI</h1>
             <nav className="hidden md:flex items-center gap-1">
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/dashboard")}
+                className="hover:bg-primary/10 hover:text-primary font-bold"
+              >
+                Dashboard
+              </Button>
+              <Button
+                variant="ghost"
                 size="sm"
                 className="bg-primary/10 text-primary font-bold"
               >
                 Create
               </Button>
-              <Button 
-                variant="ghost" 
+              <Button
+                variant="ghost"
                 size="sm"
                 onClick={() => navigate("/history")}
                 className="hover:bg-primary/10 hover:text-primary font-bold"
@@ -205,7 +213,16 @@ const AppPage = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-card border-t border-border p-6">
             <nav className="flex flex-col space-y-4 text-lg font-bold">
-              <button 
+              <button
+                onClick={() => {
+                  navigate("/dashboard");
+                  setMobileMenuOpen(false);
+                }}
+                className="hover:text-primary transition-colors duration-300 py-2 border-b border-border text-left"
+              >
+                Dashboard
+              </button>
+              <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-primary py-2 border-b border-border text-left"
               >
