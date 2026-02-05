@@ -137,7 +137,7 @@ const History = () => {
   const fetchDocuments = async (userId: string) => {
     try {
       const { data, error } = await supabase
-        .from("campaigns")
+        .from("prds")
         .select("*")
         .eq("user_id", userId)
         .order("created_at", { ascending: false });

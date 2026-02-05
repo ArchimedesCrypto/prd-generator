@@ -326,7 +326,7 @@ export type Database = {
         }
         Relationships: []
       }
-      campaigns: {
+      prds: {
         Row: {
           additional_notes: string | null
           content: string | null
