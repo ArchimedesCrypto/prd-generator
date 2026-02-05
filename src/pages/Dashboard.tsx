@@ -1,22 +1,23 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { 
-  Loader2, 
-  LogOut, 
-  Menu, 
-  X, 
-  CreditCard, 
-  FileText, 
-  Clock, 
-  Wallet, 
-  ChartLine, 
-  User, 
-  Users, 
-  Settings, 
+import {
+  Loader2,
+  LogOut,
+  Menu,
+  X,
+  CreditCard,
+  FileText,
+  Clock,
+  Wallet,
+  ChartLine,
+  User as UserIcon,
+  Users,
+  Settings,
   ShieldCheck, 
   Sparkles, 
   Download, 
@@ -41,7 +42,7 @@ import { Badge } from "@/components/ui/badge";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [credits, setCredits] = useState<number>(1);
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -136,6 +137,14 @@ const Dashboard = () => {
             <button className="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all">
               <CircleHelp className="h-4 w-4" />
             </button>
+            <div className="flex items-center gap-3 mr-2">
+              <button
+                onClick={() => setCreditsModalOpen(true)}
+                className="text-xs font-semibold text-sky-600 bg-sky-600/10 px-2 py-1 rounded-full hover:bg-sky-600/20 transition-colors cursor-pointer"
+              >
+                {credits} {credits === 1 ? 'credit' : 'credits'}
+              </button>
+            </div>
             <div className="w-8 h-8 bg-gradient-to-br from-sky-600 to-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-xs font-medium text-white">{user.email?.substring(0, 2).toUpperCase()}</span>
             </div>
@@ -170,48 +179,48 @@ const Dashboard = () => {
             <div className="mb-8">
               <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Billing</div>
               <nav className="space-y-1">
-                <a href="#" className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg">
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg">
                   <CreditCard className="w-4 h-4 mr-3 text-sky-600" />
                   Overview
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <FileText className="w-4 h-4 mr-3" />
                   Invoices
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <Clock className="w-4 h-4 mr-3" />
                   Transactions
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <Wallet className="w-4 h-4 mr-3" />
                   Payment Methods
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <ChartLine className="w-4 h-4 mr-3" />
                   Usage & Limits
-                </a>
+                </button>
               </nav>
             </div>
 
             <div className="mb-8">
               <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Account</div>
               <nav className="space-y-1">
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
-                  <User className="w-4 h-4 mr-3" />
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                  <UserIcon className="w-4 h-4 mr-3" />
                   Profile
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <Users className="w-4 h-4 mr-3" />
                   Team
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <Settings className="w-4 h-4 mr-3" />
                   Preferences
-                </a>
-                <a href="#" className="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                </button>
+                <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
                   <ShieldHalf className="w-4 h-4 mr-3" />
                   Security
-                </a>
+                </button>
               </nav>
             </div>
 
@@ -261,21 +270,21 @@ const Dashboard = () => {
                   <div>
                     <div className="flex items-center space-x-3 mb-2">
                       <h2 className="text-lg font-semibold text-gray-900">Current Subscription</h2>
-                      <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-50">Active</Badge>
+                      <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-50">Active (Mock)</Badge>
                     </div>
-                    <p className="text-sm text-gray-500">Your subscription renews on March 15, 2024</p>
+                    <p className="text-sm text-gray-500">Your subscription renews on March 15, 2024 (Mock)</p>
                   </div>
                   <button className="text-sm text-sky-600 hover:text-sky-600/80 font-medium">Manage Plan</button>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-1">Plan Type</div>
+                    <div className="text-xs text-gray-500 mb-1">Plan Type (Mock)</div>
                     <div className="text-lg font-semibold text-gray-900">Professional</div>
                     <div className="text-xs text-gray-500 mt-1">Monthly billing</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-1">Monthly Cost</div>
+                    <div className="text-xs text-gray-500 mb-1">Monthly Cost (Mock)</div>
                     <div className="text-lg font-semibold text-gray-900">$49.00</div>
                     <div className="text-xs text-emerald-600 mt-1 flex items-center">
                       <ArrowDown className="h-3 w-3 mr-1" />
@@ -283,12 +292,12 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-1">Next Billing Date</div>
+                    <div className="text-xs text-gray-500 mb-1">Next Billing Date (Mock)</div>
                     <div className="text-lg font-semibold text-gray-900">Mar 15</div>
                     <div className="text-xs text-gray-500 mt-1">21 days remaining</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-1">Team Members</div>
+                    <div className="text-xs text-gray-500 mb-1">Team Members (Mock)</div>
                     <div className="text-lg font-semibold text-gray-900">8 / 10</div>
                     <div className="text-xs text-gray-500 mt-1">2 seats available</div>
                   </div>
@@ -365,7 +374,7 @@ const Dashboard = () => {
             </section>
 
             <section id="usage-statistics" className="mb-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Current Usage Period</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Current Usage Period (Mock)</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <Card className="p-5 shadow-sm border-gray-200">
                   <div className="flex items-center justify-between mb-3">
@@ -431,7 +440,7 @@ const Dashboard = () => {
 
             <section id="invoice-list" className="mb-8">
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                <h2 className="text-lg font-semibold text-gray-900">Recent Invoices</h2>
+                <h2 className="text-lg font-semibold text-gray-900">Recent Invoices (Mock)</h2>
                 <div className="flex items-center space-x-3">
                   <div className="relative">
                     <Input placeholder="Search invoices..." className="w-full md:w-64 pl-9 rounded-xl border-gray-200" />
