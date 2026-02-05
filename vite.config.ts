@@ -64,7 +64,7 @@ export default defineConfig(async ({ mode }) => {
   const allRoutes = [...staticRoutes, ...dynamicRoutes];
   
   return {
-    base: '/prd-generator/',
+    base: './',
     server: {
       host: "::",
       port: 8080,
