@@ -13,7 +13,7 @@
     <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    <title>Deepwriter AI - Professional Document Generation | API Application</title>
+    <title>PRD Generator - Deepwriter AI</title>
     <meta name="description" content="Generate professional documents using Deepwriter AI API. Create, manage, and download AI-generated content with ease. Fast processing and secure document handling.">
     <meta name="author" content="Deepwriter AI" />
     <meta name="keywords" content="deepwriter ai, document generation, ai writing, api application, content creation, automated documents, ai api, document automation">
@@ -55,6 +55,15 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
