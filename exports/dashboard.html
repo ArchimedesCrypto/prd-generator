@@ -4,14 +4,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transactions</title>
+    <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
     <style>::-webkit-scrollbar { display: none;}</style>
     <script>
         tailwind.config = {
@@ -53,72 +52,747 @@
 </head>
 <body class="font-sans bg-neutral-50 text-neutral-800">
 
-<div class="flex h-screen overflow-hidden">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col">
-        <div class="p-6 border-b border-neutral-200 flex items-center space-x-2">
-            <div class="w-8 h-8 bg-accent-600 rounded-lg flex items-center justify-center">
-                <i class="fa-solid fa-file-contract text-white text-sm"></i>
+<header id="header" class="bg-white border-b border-neutral-200 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-12">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-accent-600 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-semibold text-neutral-900">PRD Generator</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Home</a>
+                    <a href="#" class="text-sm font-medium text-neutral-900 hover:text-accent-600 transition-colors">Dashboard</a>
+                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">History</a>
+                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Transactions</a>
+                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Blog</a>
+                </div>
             </div>
-            <span class="text-lg font-bold text-neutral-900 tracking-tight">PRD Studio</span>
+            <div class="flex items-center space-x-4">
+                <button class="w-10 h-10 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                    <i class="fa-regular fa-bell text-neutral-600"></i>
+                </button>
+                <div class="w-10 h-10 rounded-lg bg-accent-600 flex items-center justify-center text-white font-semibold text-sm cursor-pointer">
+                    JD
+                </div>
+            </div>
         </div>
-        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-            <a href="#" class="flex items-center space-x-3 px-3 py-2 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 rounded-lg transition-colors group">
-                <i class="fa-solid fa-house text-sm"></i>
-                <span class="text-sm font-medium">Dashboard</span>
-            </a>
-            <a href="#" class="flex items-center space-x-3 px-3 py-2 bg-accent-50 text-accent-700 rounded-lg transition-colors group">
-                <i class="fa-solid fa-receipt text-sm"></i>
-                <span class="text-sm font-medium">Transactions</span>
-            </a>
+    </nav>
+</header>
+
+<div class="flex">
+    <aside id="sidebar" class="w-64 bg-white border-r border-neutral-200 min-h-screen sticky top-16">
+        <div class="p-6">
+            <button class="w-full bg-accent-600 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-accent-700 transition-colors shadow-sm flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-plus"></i>
+                <span>New PRD</span>
+            </button>
+        </div>
+        <nav class="px-3">
+            <div class="mb-6">
+                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Workspace</div>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-accent-50 text-accent-700 font-medium text-sm">
+                    <i class="fa-solid fa-grip w-5"></i>
+                    <span>All Documents</span>
+                    <span class="ml-auto bg-accent-600 text-white text-xs px-2 py-0.5 rounded-full">24</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-star w-5"></i>
+                    <span>Favorites</span>
+                    <span class="ml-auto text-neutral-400 text-xs">8</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-clock w-5"></i>
+                    <span>Recent</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-share-nodes w-5"></i>
+                    <span>Shared with me</span>
+                    <span class="ml-auto text-neutral-400 text-xs">3</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-trash w-5"></i>
+                    <span>Trash</span>
+                </a>
+            </div>
+            <div class="mb-6">
+                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider flex items-center justify-between">
+                    <span>Templates</span>
+                    <button class="text-accent-600 hover:text-accent-700">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                    </button>
+                </div>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-mobile-screen-button w-5 text-blue-500"></i>
+                    <span>Mobile App</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-globe w-5 text-purple-500"></i>
+                    <span>Web Platform</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-rocket w-5 text-green-500"></i>
+                    <span>Feature</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <i class="fa-solid fa-puzzle-piece w-5 text-amber-500"></i>
+                    <span>API Integration</span>
+                </a>
+            </div>
+            <div>
+                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Projects</div>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                    <span>Q1 Roadmap</span>
+                    <span class="ml-auto text-neutral-400 text-xs">12</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+                    <span>Mobile Redesign</span>
+                    <span class="ml-auto text-neutral-400 text-xs">8</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span>API v2</span>
+                    <span class="ml-auto text-neutral-400 text-xs">4</span>
+                </a>
+            </div>
         </nav>
+        <div class="absolute bottom-0 w-64 p-4 border-t border-neutral-200">
+            <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-semibold text-accent-900">Pro Plan</span>
+                    <i class="fa-solid fa-crown text-accent-600"></i>
+                </div>
+                <div class="text-xs text-accent-700 mb-3">12 days left in trial</div>
+                <button class="w-full bg-accent-600 text-white text-xs font-semibold py-2 rounded-lg hover:bg-accent-700 transition-colors">
+                    Upgrade Now
+                </button>
+            </div>
+        </div>
     </aside>
 
-    <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto bg-neutral-50">
-        <header class="h-16 bg-white border-b border-neutral-200 flex items-center justify-between px-8 sticky top-0 z-10">
-            <h1 class="text-xl font-bold text-neutral-900">Billing & Transactions</h1>
-            <div class="flex items-center space-x-4">
-                <button class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600">
-                    <i class="fa-regular fa-bell text-xs"></i>
-                </button>
-                <div class="w-8 h-8 rounded-full bg-accent-600 flex items-center justify-center text-white text-xs font-bold">JD</div>
+    <main id="main-content" class="flex-1 p-8">
+        <div id="dashboard-header" class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-neutral-900 mb-2">Dashboard</h1>
+                    <p class="text-neutral-600">Welcome back! Here's what's happening with your PRDs.</p>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <input type="text" placeholder="Search documents..." class="pl-10 pr-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent w-64">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 text-sm"></i>
+                    </div>
+                    <button class="w-10 h-10 border border-neutral-200 rounded-lg flex items-center justify-center hover:bg-neutral-100 transition-colors">
+                        <i class="fa-solid fa-filter text-neutral-600"></i>
+                    </button>
+                    <button class="w-10 h-10 border border-neutral-200 rounded-lg flex items-center justify-center hover:bg-neutral-100 transition-colors">
+                        <i class="fa-solid fa-sort text-neutral-600"></i>
+                    </button>
+                </div>
             </div>
-        </header>
+        </div>
 
-        <section class="max-w-6xl mx-auto p-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <!-- Usage stats from UX Pilot designs -->
-                <div class="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
-                    <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Usage Credits</p>
-                    <p class="text-2xl font-bold text-neutral-900">3,173</p>
+        <div id="stats-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-blue-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
+                </div>
+                <div class="text-3xl font-bold text-neutral-900 mb-1">24</div>
+                <div class="text-sm text-neutral-600">Total PRDs</div>
+            </div>
+            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-pen-to-square text-purple-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">5 active</span>
+                </div>
+                <div class="text-3xl font-bold text-neutral-900 mb-1">8</div>
+                <div class="text-sm text-neutral-600">In Progress</div>
+            </div>
+            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-check-circle text-green-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+8%</span>
+                </div>
+                <div class="text-3xl font-bold text-neutral-900 mb-1">16</div>
+                <div class="text-sm text-neutral-600">Completed</div>
+            </div>
+            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
+                    </div>
+                    <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2 py-1 rounded-full">2.3s avg</span>
+                </div>
+                <div class="text-3xl font-bold text-neutral-900 mb-1">3.2h</div>
+                <div class="text-sm text-neutral-600">Time Saved</div>
+            </div>
+        </div>
+
+        <div id="quick-actions-section" class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-neutral-900">Quick Actions</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wand-magic-sparkles text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-neutral-900 mb-1">Generate New PRD</h3>
+                    <p class="text-sm text-neutral-600">Start from scratch with AI</p>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-neutral-900 mb-1">Use Template</h3>
+                    <p class="text-sm text-neutral-600">Choose from library</p>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-upload text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-neutral-900 mb-1">Import Document</h3>
+                    <p class="text-sm text-neutral-600">Upload existing PRD</p>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-neutral-900 mb-1">Team Workspace</h3>
+                    <p class="text-sm text-neutral-600">Collaborate with team</p>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div id="recent-documents-section" class="lg:col-span-2">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-neutral-900">Recent Documents</h2>
+                    <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-start space-x-4 flex-1">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-mobile-screen-button text-blue-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Mobile App Redesign PRD</h3>
+                                    <p class="text-sm text-neutral-600 mb-2">Complete redesign of the mobile application with new user flows and features...</p>
+                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>Updated 2 hours ago</span>
+                                        </span>
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-solid fa-user"></i>
+                                            <span>John Doe</span>
+                                        </span>
+                                        <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex -space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            </div>
+                            <span class="text-xs text-neutral-500">+2 collaborators</span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-start space-x-4 flex-1">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-globe text-purple-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Web Dashboard Enhancement</h3>
+                                    <p class="text-sm text-neutral-600 mb-2">Adding advanced analytics and reporting features to the admin dashboard...</p>
+                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>Updated 5 hours ago</span>
+                                        </span>
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-solid fa-user"></i>
+                                            <span>Sarah Williams</span>
+                                        </span>
+                                        <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">In Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-neutral-200 rounded-full">
+                                    <div class="w-3/4 h-2 bg-accent-600 rounded-full"></div>
+                                </div>
+                                <span class="text-xs text-neutral-500">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-start space-x-4 flex-1">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-rocket text-green-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Payment Gateway Integration</h3>
+                                    <p class="text-sm text-neutral-600 mb-2">Implementing Stripe payment processing with subscription management...</p>
+                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>Updated yesterday</span>
+                                        </span>
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-solid fa-user"></i>
+                                            <span>Michael Chen</span>
+                                        </span>
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Review</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex -space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            </div>
+                            <span class="text-xs text-neutral-500">3 collaborators</span>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="flex items-start justify-between mb-3">
+                            <div class="flex items-start space-x-4 flex-1">
+                                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-puzzle-piece text-amber-600 text-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">REST API v2 Documentation</h3>
+                                    <p class="text-sm text-neutral-600 mb-2">Comprehensive API documentation with authentication and rate limiting...</p>
+                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-regular fa-clock"></i>
+                                            <span>Updated 3 days ago</span>
+                                        </span>
+                                        <span class="flex items-center space-x-1">
+                                            <i class="fa-solid fa-user"></i>
+                                            <span>David Rodriguez</span>
+                                        </span>
+                                        <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">In Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-neutral-200 rounded-full">
+                                    <div class="w-1/2 h-2 bg-accent-600 rounded-full"></div>
+                                </div>
+                                <span class="text-xs text-neutral-500">50%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
-                <div class="p-6 border-b border-neutral-200 flex items-center justify-between">
-                    <h2 class="font-bold text-neutral-900">Recent Transactions</h2>
-                    <button class="text-xs font-semibold text-accent-600 hover:text-accent-700">View All</button>
+
+            <div id="activity-sidebar" class="space-y-6">
+                <div id="templates-widget">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-neutral-900">Popular Templates</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-mobile-screen-button text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Mobile App</h4>
+                                    <p class="text-xs text-neutral-600">12 sections</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-10 h-10 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-globe text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Web Platform</h4>
+                                    <p class="text-xs text-neutral-600">15 sections</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-10 h-10 bg-gradient-to-br from-green-50 to-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-rocket text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Feature PRD</h4>
+                                    <p class="text-xs text-neutral-600">8 sections</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-neutral-50 text-neutral-500 text-xs uppercase font-semibold">
-                        <tr>
-                            <th class="px-6 py-4">Transaction ID</th>
-                            <th class="px-6 py-4">Status</th>
-                            <th class="px-6 py-4">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm">
-                        <tr class="border-b border-neutral-100">
-                            <td class="px-6 py-4 font-mono text-neutral-400">TX-91823...</td>
-                            <td class="px-6 py-4"><span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs">Completed</span></td>
-                            <td class="px-6 py-4 font-bold">$12.50</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div id="activity-feed">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-neutral-900">Recent Activity</h2>
+                    </div>
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-sm text-neutral-700"><span class="font-semibold">John Doe</span> completed <span class="font-semibold">Mobile App Redesign PRD</span></p>
+                                    <span class="text-xs text-neutral-500">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Sarah Williams</span> updated <span class="font-semibold">Web Dashboard Enhancement</span></p>
+                                    <span class="text-xs text-neutral-500">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-sm text-neutral-700"><span class="font-semibold">David Rodriguez</span> created <span class="font-semibold">API v2 Documentation</span></p>
+                                    <span class="text-xs text-neutral-500">1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Alex Johnson</span> commented on <span class="font-semibold">Payment Gateway Integration</span></p>
+                                    <span class="text-xs text-neutral-500">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
+                                <div class="flex-1">
+                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Emma Davis</span> shared <span class="font-semibold">Mobile App Template</span></p>
+                                    <span class="text-xs text-neutral-500">3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="team-members">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-neutral-900">Team Members</h2>
+                        <button class="text-sm font-medium text-accent-600 hover:text-accent-700">
+                            <i class="fa-solid fa-plus mr-1"></i>Invite
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-xl border border-neutral-200 p-5">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <div class="font-semibold text-sm text-neutral-900">John Doe</div>
+                                        <div class="text-xs text-neutral-500">Product Manager</div>
+                                    </div>
+                                </div>
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <div class="font-semibold text-sm text-neutral-900">Sarah Williams</div>
+                                        <div class="text-xs text-neutral-500">UX Designer</div>
+                                    </div>
+                                </div>
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <div class="font-semibold text-sm text-neutral-900">David Rodriguez</div>
+                                        <div class="text-xs text-neutral-500">Tech Lead</div>
+                                    </div>
+                                </div>
+                                <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-10 h-10 rounded-full">
+                                    <div>
+                                        <div class="font-semibold text-sm text-neutral-900">Alex Johnson</div>
+                                        <div class="text-xs text-neutral-500">Developer</div>
+                                    </div>
+                                </div>
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <div id="projects-section" class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-neutral-900">Projects Overview</h2>
+                <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">Manage projects</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                            <h3 class="font-semibold text-neutral-900">Q1 Roadmap</h3>
+                        </div>
+                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between text-sm mb-2">
+                            <span class="text-neutral-600">Progress</span>
+                            <span class="font-semibold text-neutral-900">65%</span>
+                        </div>
+                        <div class="w-full h-2 bg-neutral-200 rounded-full">
+                            <div class="w-2/3 h-2 bg-blue-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                        </div>
+                        <span class="text-neutral-600">12 PRDs</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+                            <h3 class="font-semibold text-neutral-900">Mobile Redesign</h3>
+                        </div>
+                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between text-sm mb-2">
+                            <span class="text-neutral-600">Progress</span>
+                            <span class="font-semibold text-neutral-900">40%</span>
+                        </div>
+                        <div class="w-full h-2 bg-neutral-200 rounded-full">
+                            <div class="w-2/5 h-2 bg-purple-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                        </div>
+                        <span class="text-neutral-600">8 PRDs</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <h3 class="font-semibold text-neutral-900">API v2</h3>
+                        </div>
+                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        </button>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between text-sm mb-2">
+                            <span class="text-neutral-600">Progress</span>
+                            <span class="font-semibold text-neutral-900">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-neutral-200 rounded-full">
+                            <div class="w-5/6 h-2 bg-green-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex -space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                        </div>
+                        <span class="text-neutral-600">4 PRDs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="insights-section" class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-neutral-900">Productivity Insights</h2>
+                <div class="flex items-center space-x-2">
+                    <button class="px-3 py-1.5 text-sm font-medium text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">Week</button>
+                    <button class="px-3 py-1.5 text-sm font-medium text-white bg-accent-600 rounded-lg">Month</button>
+                    <button class="px-3 py-1.5 text-sm font-medium text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">Year</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl border border-neutral-200 p-6">
+                    <h3 class="font-semibold text-neutral-900 mb-4">PRDs Created Over Time</h3>
+                    <div class="h-64 flex items-end justify-between space-x-2">
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 45%"></div>
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 60%"></div>
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 75%"></div>
+                        <div class="flex-1 bg-accent-600 rounded-t-lg hover:bg-accent-700 transition-colors cursor-pointer" style="height: 90%"></div>
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 55%"></div>
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 70%"></div>
+                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 40%"></div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 text-xs text-neutral-500">
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                        <span>Sun</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-neutral-200 p-6">
+                    <h3 class="font-semibold text-neutral-900 mb-4">Document Status Distribution</h3>
+                    <div class="flex items-center justify-center h-64">
+                        <div class="relative w-48 h-48">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="96" cy="96" r="80" fill="none" stroke="#e5e5e5" stroke-width="32"></circle>
+                                <circle cx="96" cy="96" r="80" fill="none" stroke="#10b981" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="0" stroke-linecap="round"></circle>
+                                <circle cx="96" cy="96" r="80" fill="none" stroke="#f59e0b" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="167" stroke-linecap="round"></circle>
+                                <circle cx="96" cy="96" r="80" fill="none" stroke="#3b82f6" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="251" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center flex-col">
+                                <div class="text-3xl font-bold text-neutral-900">24</div>
+                                <div class="text-sm text-neutral-600">Total PRDs</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 mb-1">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <span class="text-sm font-semibold text-neutral-900">16</span>
+                            </div>
+                            <div class="text-xs text-neutral-600">Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 mb-1">
+                                <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                                <span class="text-sm font-semibold text-neutral-900">8</span>
+                            </div>
+                            <div class="text-xs text-neutral-600">In Progress</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="flex items-center justify-center space-x-2 mb-1">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                <span class="text-sm font-semibold text-neutral-900">3</span>
+                            </div>
+                            <div class="text-xs text-neutral-600">Review</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tips-section" class="mb-8">
+            <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl border border-accent-200 p-8">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <i class="fa-solid fa-lightbulb text-accent-600 text-xl"></i>
+                            <h3 class="text-xl font-bold text-neutral-900">Pro Tip</h3>
+                        </div>
+                        <p class="text-neutral-700 mb-4 leading-relaxed">Use keyboard shortcuts to speed up your workflow. Press <kbd class="px-2 py-1 bg-white rounded border border-neutral-300 text-sm font-mono">Ctrl + K</kbd> to quickly search documents, or <kbd class="px-2 py-1 bg-white rounded border border-neutral-300 text-sm font-mono">Ctrl + N</kbd> to create a new PRD instantly.</p>
+                        <button class="text-accent-600 font-semibold text-sm hover:text-accent-700 transition-colors">
+                            View all shortcuts <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                    <button class="w-8 h-8 rounded-lg hover:bg-accent-200 flex items-center justify-center transition-colors">
+                        <i class="fa-solid fa-times text-accent-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="integrations-quick-access" class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-neutral-900">Quick Integrations</h2>
+                <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all integrations</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-slack text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">Slack</span>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-jira text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">Jira</span>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-github text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">GitHub</span>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-trello text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">Trello</span>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-figma text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">Figma</span>
+                </button>
+                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
+                    <i class="fa-brands fa-google text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
+                    <span class="text-xs font-medium text-neutral-700">Drive</span>
+                </button>
+            </div>
+        </div>
     </main>
 </div>
+
 </body>
 </html>
