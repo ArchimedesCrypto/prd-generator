@@ -1,0 +1,22 @@
+project_id = "vmdpnlykwngawuannydj"
+
+[functions.deepwriter-generate]
+verify_jwt = true
+
+[functions.deepwriter-check-status]
+verify_jwt = true
+
+[functions.deepwriter-fetch-jobs]
+verify_jwt = true
+
+[functions.sitemap]
+verify_jwt = false
+
+[functions.blog-sitemap]
+verify_jwt = false
+
+[functions.send-confirmation-email]
+verify_jwt = false
+
+[functions.refresh-job-statuses]
+verify_jwt = false
