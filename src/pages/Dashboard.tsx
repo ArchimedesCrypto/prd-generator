@@ -14,7 +14,7 @@ import {
   FileText,
   Clock,
   Wallet,
-  ChartLine,
+  LineChart,
   User as UserIcon,
   Users,
   Settings,
@@ -196,7 +196,7 @@ const Dashboard = () => {
                   Payment Methods
                 </button>
                 <button onClick={() => navigate("/dashboard")} className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
-                  <ChartLine className="w-4 h-4 mr-3" />
+                  <LineChart className="w-4 h-4 mr-3" />
                   Usage & Limits
                 </button>
               </nav>

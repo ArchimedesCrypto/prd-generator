@@ -12,7 +12,7 @@ import {
   FileText, 
   Menu, 
   X, 
-  FileLines, 
+  FileText, 
   Keyboard, 
   Bell, 
   Lightbulb, 
@@ -21,8 +21,8 @@ import {
   Image as ImageIcon, 
   Link as LinkIcon, 
   Plus, 
-  LayerGroup, 
-  FileInvoice, 
+  Layers, 
+  FileText, 
   CheckCircle, 
   Circle, 
   Sliders, 
@@ -231,7 +231,7 @@ const AppPage = () => {
           <div className="flex items-center space-x-8">
             <div className="flex items-center space-x-3 cursor-pointer" onClick={() => navigate("/")}>
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <FileLines className="text-white w-4 h-4" />
+                <FileText className="text-white w-4 h-4" />
               </div>
               <span className="text-lg font-semibold text-neutral-800">Deepwriter AI</span>
             </div>
@@ -358,7 +358,7 @@ const AppPage = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <LayerGroup className="text-primary w-5 h-5" />
+                      <Layers className="text-primary w-5 h-5" />
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-neutral-900">Additional Context</h2>
@@ -439,7 +439,7 @@ const AppPage = () => {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <FileInvoice className="text-primary w-5 h-5" />
+                      <FileText className="text-primary w-5 h-5" />
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-neutral-900">PRD Template</h2>
@@ -721,7 +721,7 @@ const AppPage = () => {
                 { title: "SaaS Product", desc: "For B2B and B2C software products", icon: Rocket, color: "bg-primary/10", iconColor: "text-primary", sections: "12 sections" },
                 { title: "Mobile App", desc: "iOS and Android applications", icon: Smartphone, color: "bg-purple-100", iconColor: "text-purple-600", sections: "10 sections" },
                 { title: "E-commerce", desc: "Online stores and marketplaces", icon: Store, color: "bg-emerald-100", iconColor: "text-emerald-600", sections: "14 sections" },
-                { title: "Platform", desc: "Multi-sided platforms and ecosystems", icon: LayerGroup, color: "bg-amber-100", iconColor: "text-amber-600", sections: "16 sections" }
+                { title: "Platform", desc: "Multi-sided platforms and ecosystems", icon: Layers, color: "bg-amber-100", iconColor: "text-amber-600", sections: "16 sections" }
               ].map((t, i) => (
                 <div key={i} className="bg-white border border-neutral-200 rounded-[12px] p-6 hover:border-primary hover:shadow-md transition-all cursor-pointer">
                   <div className={`w-12 h-12 ${t.color} rounded-lg flex items-center justify-center mb-4`}>
@@ -802,7 +802,7 @@ const AppPage = () => {
                 { title: "AI-Powered Generation", desc: "Advanced language models trained on thousands of successful PRDs generate comprehensive, professional documents in minutes.", icon: Wand2, color: "bg-primary/10", iconColor: "text-primary" },
                 { title: "Fully Customizable", desc: "Toggle sections, adjust detail levels, and customize tone to match your team's workflow and documentation standards.", icon: Sliders, color: "bg-purple-100", iconColor: "text-purple-600" },
                 { title: "Team Collaboration", desc: "Share PRDs with stakeholders, collect feedback, and iterate together in real-time with built-in collaboration tools.", icon: Slack, color: "bg-emerald-100", iconColor: "text-emerald-600" },
-                { title: "Template Library", desc: "Access industry-specific templates for SaaS, mobile apps, e-commerce, and more to jumpstart your documentation.", icon: LayerGroup, color: "bg-amber-100", iconColor: "text-amber-600" },
+                { title: "Template Library", desc: "Access industry-specific templates for SaaS, mobile apps, e-commerce, and more to jumpstart your documentation.", icon: Layers, color: "bg-amber-100", iconColor: "text-amber-600" },
                 { title: "Market Insights", desc: "Automatically include competitive analysis, market trends, and user behavior data to strengthen your product strategy.", icon: LineChart, color: "bg-blue-100", iconColor: "text-blue-600" },
                 { title: "Lightning Fast", desc: "Generate comprehensive PRDs in under 2 minutes with our optimized AI engine and intuitive interface.", icon: Sparkles, color: "bg-rose-100", iconColor: "text-rose-600" }
               ].map((f, i) => (
@@ -902,7 +902,7 @@ const AppPage = () => {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <FileLines className="text-white w-4 h-4" />
+                  <FileText className="text-white w-4 h-4" />
                 </div>
                 <span className="text-lg font-semibold text-neutral-800">Deepwriter AI</span>
               </div>

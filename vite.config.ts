@@ -2,7 +2,6 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import Sitemap from "vite-plugin-sitemap";
 
 // Fetch blog routes from SEObot for sitemap generation
 async function getBlogRoutes(apiKey: string | undefined) {
@@ -65,6 +64,7 @@ export default defineConfig(async ({ mode }) => {
   const allRoutes = [...staticRoutes, ...dynamicRoutes];
   
   return {
+    base: '/prd-generator/',
     server: {
       host: "::",
       port: 8080,
@@ -72,21 +72,6 @@ export default defineConfig(async ({ mode }) => {
     plugins: [
       react(),
       mode === "development" && componentTagger(),
-      mode === "production" && Sitemap({
-        hostname: 'https://yourdomain.com',
-        dynamicRoutes: allRoutes,
-        changefreq: 'daily',
-        priority: {
-          '/': 1.0,
-          '/blog': 0.9,
-          '/blog/*': 0.8,
-          '/app': 0.7,
-          '/auth': 0.5,
-          '/history': 0.7,
-        },
-        lastmod: new Date(),
-        readable: true,
-      }),
     ].filter(Boolean),
     resolve: {
       alias: {

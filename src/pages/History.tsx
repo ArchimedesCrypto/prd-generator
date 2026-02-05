@@ -27,7 +27,7 @@ import {
   Star,
   Home,
   FolderOpen,
-  ChartLine,
+  LineChart,
   Users,
   Bell,
   Settings,
@@ -228,7 +228,7 @@ const History = () => {
             <FolderOpen className="h-5 w-5" />
           </button>
           <button className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-400 hover:text-primary hover:bg-gray-50 transition-all">
-            <ChartLine className="h-5 w-5" />
+            <LineChart className="h-5 w-5" />
           </button>
           <button className="w-10 h-10 flex items-center justify-center rounded-xl text-gray-400 hover:text-primary hover:bg-gray-50 transition-all">
             <Users className="h-5 w-5" />

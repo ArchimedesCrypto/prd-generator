@@ -11,18 +11,18 @@ import {
   ArrowDownWideNarrow, 
   ArrowRight, 
   FileText, 
-  LayerGroup, 
+  Layers, 
   Bolt, 
   Smartphone,
-  ListCheck,
+  ListChecks,
   Book,
-  Comments,
-  DiagramProject,
-  Crosshair,
+  MessageSquare,
+  Share2,
+  Target,
   Users,
-  ChartLine,
-  RankingStar,
-  PenSquare,
+  LineChart,
+  Star,
+  SquarePen,
   RotateCcw,
   Mail,
   Check,
@@ -345,7 +345,7 @@ export default function Blog() {
               </div>
               <div className="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 group">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-200 transition">
-                  <LayerGroup className="text-purple-700 w-6 h-6" />
+                  <Layers className="text-purple-700 w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-2">Enterprise PRD</h3>
                 <p className="text-sm text-neutral-600 mb-4">Comprehensive template for large-scale enterprise product development initiatives.</p>
@@ -391,7 +391,7 @@ export default function Blog() {
               <div className="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                    <ListCheck className="text-primary w-7 h-7" />
+                    <ListChecks className="text-primary w-7 h-7" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-neutral-900 mb-3">PRD Checklist</h3>
@@ -425,7 +425,7 @@ export default function Blog() {
               <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl p-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                    <Comments className="text-emerald-700 w-7 h-7" />
+                    <MessageSquare className="text-emerald-700 w-7 h-7" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-neutral-900 mb-3">Stakeholder Interview Kit</h3>
@@ -442,7 +442,7 @@ export default function Blog() {
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-8">
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-                    <DiagramProject className="text-orange-700 w-7 h-7" />
+                    <Share2 className="text-orange-700 w-7 h-7" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-neutral-900 mb-3">PRD Examples Library</h3>
@@ -472,7 +472,7 @@ export default function Blog() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white border border-neutral-200 rounded-xl p-6">
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Crosshair className="text-primary w-5 h-5" />
+                  <Target className="text-primary w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-3">Start with the Problem</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">
@@ -490,7 +490,7 @@ export default function Blog() {
               </div>
               <div className="bg-white border border-neutral-200 rounded-xl p-6">
                 <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
-                  <ChartLine className="text-emerald-700 w-5 h-5" />
+                  <LineChart className="text-emerald-700 w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-3">Define Success Metrics</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">
@@ -499,7 +499,7 @@ export default function Blog() {
               </div>
               <div className="bg-white border border-neutral-200 rounded-xl p-6">
                 <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <RankingStar className="text-orange-700 w-5 h-5" />
+                  <Star className="text-orange-700 w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-3">Prioritize Ruthlessly</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">
@@ -508,7 +508,7 @@ export default function Blog() {
               </div>
               <div className="bg-white border border-neutral-200 rounded-xl p-6">
                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <PenSquare className="text-blue-700 w-5 h-5" />
+                  <SquarePen className="text-blue-700 w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-semibold text-neutral-900 mb-3">Be Specific and Actionable</h3>
                 <p className="text-sm text-neutral-600 leading-relaxed">
