@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { SEO } from "@/components/SEO";
-import { 
-  FileText, 
+import {
+  FileText,
+  Menu,
+  X,
   Play, 
   Check, 
   Sparkles, 
@@ -31,8 +34,10 @@ import {
 } from "lucide-react";
 
 const Landing = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-white font-sans antialiased text-gray-900">
+    <div className="min-h-screen bg-background font-sans antialiased text-foreground">
       <SEO 
         title="PRD Generator - Build better products with intelligent PRDs"
         description="Transform your product ideas into comprehensive, structured PRDs in minutes. Built for modern product teams who move fast."
@@ -40,32 +45,97 @@ const Landing = () => {
       />
       
       {/* Navigation */}
-      <nav id="header" className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+      <nav id="header" className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-border z-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-12">
               <Link to="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-[#0284c7] rounded-lg flex items-center justify-center">
-                  <FileText className="text-white w-4 h-4" />
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <FileText className="text-primary-foreground w-4 h-4" />
                 </div>
                 <span className="text-lg font-semibold tracking-tight">PRD Generator</span>
               </Link>
               <div className="hidden md:flex items-center space-x-8">
-                <a href="#features" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-                <a href="#workflow" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Workflow</a>
-                <a href="#templates" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Templates</a>
-                <a href="#pricing" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
-                <Link to="/blog" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Blog</Link>
+                <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Features</a>
+                <a href="#workflow" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Workflow</a>
+                <a href="#templates" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Templates</a>
+                <a href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+                <Link to="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/auth" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Sign in</Link>
-              <Button asChild className="bg-[#0284c7] text-white text-sm font-medium px-4 py-2 rounded-xl hover:bg-[#0284c7]/90 transition-all shadow-sm">
-                <Link to="/auth">Get started</Link>
-              </Button>
+              <div className="hidden md:flex items-center space-x-4">
+                <Link to="/auth" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Sign in</Link>
+                <Button asChild className="bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-xl hover:bg-primary/90 transition-all shadow-sm">
+                  <Link to="/auth">Get started</Link>
+                </Button>
+              </div>
+              
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2 text-foreground"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {mobileMenuOpen && (
+          <div className="absolute top-16 left-0 right-0 z-20 bg-background border-b border-border p-6 md:hidden">
+            <nav className="flex flex-col space-y-4">
+              <a
+                href="#features"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <a
+                href="#workflow"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Workflow
+              </a>
+              <a
+                href="#templates"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Templates
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pricing
+              </a>
+              <Link
+                to="/blog"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              <div className="flex flex-col space-y-2 pt-2">
+                <Link
+                  to="/auth"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign in
+                </Link>
+                <Button asChild className="w-full bg-primary text-primary-foreground" onClick={() => setMobileMenuOpen(false)}>
+                  <Link to="/auth">Get started</Link>
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
       </nav>
 
       <main>
@@ -240,146 +310,146 @@ const Landing = () => {
         </section>
 
         {/* Features */}
-        <section id="features" className="py-24 px-6 lg:px-8 bg-gray-50">
+        <section id="features" className="py-24 px-6 lg:px-8 bg-secondary/50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-4">Everything you need to ship faster</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">Powerful features designed for modern product development workflows.</p>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">Everything you need to ship faster</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Powerful features designed for modern product development workflows.</p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="bg-white rounded-xl p-10 border border-gray-200">
+              <div className="bg-background rounded-xl p-10 border border-border">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-10 h-10 bg-[#0284c7]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Wand2 className="text-[#0284c7] w-5 h-5" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Wand2 className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">AI Template Library</h3>
-                    <p className="text-gray-600 leading-relaxed">Choose from dozens of pre-built templates for different product types, industries, and use cases. Customize to match your workflow.</p>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">AI Template Library</h3>
+                    <p className="text-muted-foreground leading-relaxed">Choose from dozens of pre-built templates for different product types, industries, and use cases. Customize to match your workflow.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mt-6">
-                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                    <div className="text-sm font-medium text-gray-900">Feature Launch</div>
-                    <div className="text-xs text-gray-500 mt-1">Complete PRD template</div>
+                  <div className="bg-secondary/50 rounded-lg p-3 border border-border">
+                    <div className="text-sm font-medium text-foreground">Feature Launch</div>
+                    <div className="text-xs text-muted-foreground mt-1">Complete PRD template</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                    <div className="text-sm font-medium text-gray-900">API Design</div>
-                    <div className="text-xs text-gray-500 mt-1">Technical spec template</div>
+                  <div className="bg-secondary/50 rounded-lg p-3 border border-border">
+                    <div className="text-sm font-medium text-foreground">API Design</div>
+                    <div className="text-xs text-muted-foreground mt-1">Technical spec template</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                    <div className="text-sm font-medium text-gray-900">Mobile App</div>
-                    <div className="text-xs text-gray-500 mt-1">Platform-specific PRD</div>
+                  <div className="bg-secondary/50 rounded-lg p-3 border border-border">
+                    <div className="text-sm font-medium text-foreground">Mobile App</div>
+                    <div className="text-xs text-muted-foreground mt-1">Platform-specific PRD</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                    <div className="text-sm font-medium text-gray-900">Redesign</div>
-                    <div className="text-xs text-gray-500 mt-1">UX improvement doc</div>
+                  <div className="bg-secondary/50 rounded-lg p-3 border border-border">
+                    <div className="text-sm font-medium text-foreground">Redesign</div>
+                    <div className="text-xs text-muted-foreground mt-1">UX improvement doc</div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-xl p-10 border border-gray-200">
+              <div className="bg-background rounded-xl p-10 border border-border">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-10 h-10 bg-[#0284c7]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <LineChart className="text-[#0284c7] w-5 h-5" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <LineChart className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Smart Analytics</h3>
-                    <p className="text-gray-600 leading-relaxed">Track document engagement, completion rates, and team velocity. Understand what's working and what needs improvement.</p>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Smart Analytics</h3>
+                    <p className="text-muted-foreground leading-relaxed">Track document engagement, completion rates, and team velocity. Understand what's working and what needs improvement.</p>
                   </div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 mt-6">
+                <div className="bg-secondary/50 rounded-lg p-4 border border-border mt-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-gray-700">Document Health Score</span>
-                    <span className="text-2xl font-bold text-[#0284c7]">92%</span>
+                    <span className="text-sm font-medium text-muted-foreground">Document Health Score</span>
+                    <span className="text-2xl font-bold text-primary">92%</span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Completeness</span>
+                      <span className="text-muted-foreground">Completeness</span>
                       <div className="flex items-center space-x-2">
-                        <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="w-[95%] h-full bg-[#0284c7] rounded-full"></div>
+                        <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                          <div className="w-[95%] h-full bg-primary rounded-full"></div>
                         </div>
-                        <span className="text-gray-900 font-medium">95%</span>
+                        <span className="text-foreground font-medium">95%</span>
                       </div>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Clarity</span>
+                      <span className="text-muted-foreground">Clarity</span>
                       <div className="flex items-center space-x-2">
-                        <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="w-[88%] h-full bg-[#0284c7] rounded-full"></div>
+                        <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                          <div className="w-[88%] h-full bg-primary rounded-full"></div>
                         </div>
-                        <span className="text-gray-900 font-medium">88%</span>
+                        <span className="text-foreground font-medium">88%</span>
                       </div>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Feasibility</span>
+                      <span className="text-muted-foreground">Feasibility</span>
                       <div className="flex items-center space-x-2">
-                        <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
-                          <div className="w-[93%] h-full bg-[#0284c7] rounded-full"></div>
+                        <div className="w-24 h-2 bg-muted rounded-full overflow-hidden">
+                          <div className="w-[93%] h-full bg-primary rounded-full"></div>
                         </div>
-                        <span className="text-gray-900 font-medium">93%</span>
+                        <span className="text-foreground font-medium">93%</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-xl p-10 border border-gray-200">
+              <div className="bg-background rounded-xl p-10 border border-border">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-10 h-10 bg-[#0284c7]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <GitBranch className="text-[#0284c7] w-5 h-5" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <GitBranch className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Version Control</h3>
-                    <p className="text-gray-600 leading-relaxed">Track every change with automatic versioning. Compare versions, restore previous states, and maintain a complete audit trail.</p>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Version Control</h3>
+                    <p className="text-muted-foreground leading-relaxed">Track every change with automatic versioning. Compare versions, restore previous states, and maintain a complete audit trail.</p>
                   </div>
                 </div>
                 <div className="space-y-3 mt-6">
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-[#0284c7] rounded-lg flex items-center justify-center text-white text-xs font-bold">v3</div>
+                  <div className="flex items-center space-x-3 p-3 bg-secondary/50 rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground text-xs font-bold">v3</div>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">Updated success metrics</div>
-                      <div className="text-xs text-gray-500">2 hours ago by Sarah Chen</div>
+                      <div className="text-sm font-medium text-foreground">Updated success metrics</div>
+                      <div className="text-xs text-muted-foreground">2 hours ago by Sarah Chen</div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-gray-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">v2</div>
+                  <div className="flex items-center space-x-3 p-3 bg-secondary/50 rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground text-xs font-bold">v2</div>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">Added technical requirements</div>
-                      <div className="text-xs text-gray-500">Yesterday by Alex Kim</div>
+                      <div className="text-sm font-medium text-foreground">Added technical requirements</div>
+                      <div className="text-xs text-muted-foreground">Yesterday by Alex Kim</div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
-                    <div className="w-8 h-8 bg-gray-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">v1</div>
+                  <div className="flex items-center space-x-3 p-3 bg-secondary/50 rounded-lg border border-border">
+                    <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground text-xs font-bold">v1</div>
                     <div className="flex-1">
-                      <div className="text-sm font-medium text-gray-900">Initial draft created</div>
-                      <div className="text-xs text-gray-500">3 days ago by Sarah Chen</div>
+                      <div className="text-sm font-medium text-foreground">Initial draft created</div>
+                      <div className="text-xs text-muted-foreground">3 days ago by Sarah Chen</div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-xl p-10 border border-gray-200">
+              <div className="bg-background rounded-xl p-10 border border-border">
                 <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-10 h-10 bg-[#0284c7]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Plug className="text-[#0284c7] w-5 h-5" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Plug className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Seamless Integrations</h3>
-                    <p className="text-gray-600 leading-relaxed">Connect with your favorite tools. Sync with Jira, Linear, Notion, Slack, and 50+ other platforms your team already uses.</p>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Seamless Integrations</h3>
+                    <p className="text-muted-foreground leading-relaxed">Connect with your favorite tools. Sync with Jira, Linear, Notion, Slack, and 50+ other platforms your team already uses.</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-4 gap-4 mt-6">
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
-                    <Github className="w-6 h-6 text-gray-900" />
+                  <div className="bg-secondary/50 rounded-lg p-4 border border-border flex items-center justify-center">
+                    <Github className="w-6 h-6 text-foreground" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                  <div className="bg-secondary/50 rounded-lg p-4 border border-border flex items-center justify-center">
                     <Linkedin className="w-6 h-6 text-blue-600" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                  <div className="bg-secondary/50 rounded-lg p-4 border border-border flex items-center justify-center">
                     <Twitter className="w-6 h-6 text-blue-400" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                  <div className="bg-secondary/50 rounded-lg p-4 border border-border flex items-center justify-center">
                     <Youtube className="w-6 h-6 text-red-600" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center text-xs font-bold text-gray-400">+50</div>
+                  <div className="bg-secondary/50 rounded-lg p-4 border border-border flex items-center justify-center text-xs font-bold text-muted-foreground">+50</div>
                 </div>
               </div>
             </div>
