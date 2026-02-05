@@ -1,6 +1,124 @@
 <!DOCTYPE html>
 <html>
-...
-[Dashboard/Transactions HTML]
-...
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'neutral': {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
+                        },
+                        'accent': {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-neutral-50 text-neutral-800">
+
+<div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col">
+        <div class="p-6 border-b border-neutral-200 flex items-center space-x-2">
+            <div class="w-8 h-8 bg-accent-600 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-file-contract text-white text-sm"></i>
+            </div>
+            <span class="text-lg font-bold text-neutral-900 tracking-tight">PRD Studio</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <a href="#" class="flex items-center space-x-3 px-3 py-2 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 rounded-lg transition-colors group">
+                <i class="fa-solid fa-house text-sm"></i>
+                <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a href="#" class="flex items-center space-x-3 px-3 py-2 bg-accent-50 text-accent-700 rounded-lg transition-colors group">
+                <i class="fa-solid fa-receipt text-sm"></i>
+                <span class="text-sm font-medium">Transactions</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-neutral-50">
+        <header class="h-16 bg-white border-b border-neutral-200 flex items-center justify-between px-8 sticky top-0 z-10">
+            <h1 class="text-xl font-bold text-neutral-900">Billing & Transactions</h1>
+            <div class="flex items-center space-x-4">
+                <button class="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-600">
+                    <i class="fa-regular fa-bell text-xs"></i>
+                </button>
+                <div class="w-8 h-8 rounded-full bg-accent-600 flex items-center justify-center text-white text-xs font-bold">JD</div>
+            </div>
+        </header>
+
+        <section class="max-w-6xl mx-auto p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Usage stats from UX Pilot designs -->
+                <div class="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
+                    <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Usage Credits</p>
+                    <p class="text-2xl font-bold text-neutral-900">3,173</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-neutral-200 flex items-center justify-between">
+                    <h2 class="font-bold text-neutral-900">Recent Transactions</h2>
+                    <button class="text-xs font-semibold text-accent-600 hover:text-accent-700">View All</button>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-neutral-50 text-neutral-500 text-xs uppercase font-semibold">
+                        <tr>
+                            <th class="px-6 py-4">Transaction ID</th>
+                            <th class="px-6 py-4">Status</th>
+                            <th class="px-6 py-4">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-neutral-100">
+                            <td class="px-6 py-4 font-mono text-neutral-400">TX-91823...</td>
+                            <td class="px-6 py-4"><span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs">Completed</span></td>
+                            <td class="px-6 py-4 font-bold">$12.50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
 </html>
