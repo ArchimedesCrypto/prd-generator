@@ -205,6 +205,14 @@ const History = () => {
               >
                 History
               </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/dashboard")}
+                className="hover:bg-primary/10 hover:text-primary font-bold"
+              >
+                Billing
+              </Button>
             </nav>
           </div>
           
@@ -257,11 +265,20 @@ const History = () => {
               >
                 Create
               </button>
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-primary py-2 border-b border-border text-left"
               >
                 History
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/dashboard");
+                  setMobileMenuOpen(false);
+                }}
+                className="hover:text-primary transition-colors duration-300 py-2 border-b border-border text-left"
+              >
+                Billing
               </button>
               <div className="py-2 border-b border-border">
                 <p className="text-sm font-bold">{user.email}</p>

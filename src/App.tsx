@@ -7,6 +7,7 @@ import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
 import AppPage from "./pages/App";
 import History from "./pages/History";
+import Dashboard from "./pages/Dashboard";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
 import BlogCategory from "./pages/BlogCategory";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/app" element={<AppPage />} />
           <Route path="/history" element={<History />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/blog/category/:slug" element={<BlogCategory />} />
