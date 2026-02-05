@@ -1,1 +1,858 @@
-<!-- Placeholder for blog.html export -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0284c7',
+                        neutral: {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>::-webkit-scrollbar { display: none;}</style>
+</head>
+<body class="bg-white font-sans antialiased">
+
+<header id="header" class="border-b border-neutral-200 bg-white sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-8">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
+                    </div>
+                    <span class="text-neutral-900 font-semibold text-lg">PRD Hub</span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg">Blog</a>
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">Resources</a>
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">Templates</a>
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">Guides</a>
+                    <a href="#" class="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">Community</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button class="p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Sign in
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-sky-700 rounded-lg transition shadow-sm">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="hero-section" class="bg-gradient-to-b from-neutral-50 to-white border-b border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 bg-primary/10 text-primary text-xs font-medium rounded-full mb-6">
+                <i class="fa-solid fa-sparkles text-xs"></i>
+                <span>Best Practices & Insights</span>
+            </div>
+            <h1 class="text-5xl font-bold text-neutral-900 mb-6 leading-tight">
+                Master the art of writing<br/>exceptional PRDs
+            </h1>
+            <p class="text-xl text-neutral-600 leading-relaxed mb-8">
+                Explore our curated collection of articles, guides, and resources designed to help product managers create clear, comprehensive, and actionable product requirement documents.
+            </p>
+            <div class="flex items-center space-x-4">
+                <div class="flex-1 max-w-md relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+                    <input type="text" placeholder="Search articles..." class="w-full pl-11 pr-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition text-sm">
+                </div>
+                <button class="px-6 py-3 bg-neutral-900 text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition shadow-sm">
+                    Browse All
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="filter-section" class="border-b border-neutral-100 bg-white sticky top-[73px] z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg transition shadow-sm">
+                    All Topics
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Fundamentals
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Templates
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Case Studies
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Tools
+                </button>
+                <button class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition">
+                    Research
+                </button>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button class="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:border-neutral-300 rounded-lg transition">
+                    <i class="fa-solid fa-filter text-xs"></i>
+                    <span>Filter</span>
+                </button>
+                <button class="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:border-neutral-300 rounded-lg transition">
+                    <i class="fa-solid fa-arrow-down-short-wide text-xs"></i>
+                    <span>Sort</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="featured-articles" class="bg-white border-b border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold text-neutral-900">Featured Articles</h2>
+            <a href="#" class="text-sm font-medium text-primary hover:text-sky-700 flex items-center space-x-1">
+                <span>View all</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-64 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d24b209070-7e7ed7428047f494366c.png" alt="modern minimalist workspace with laptop showing product documentation, clean desk setup, soft natural lighting, professional photography" />
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary text-xs font-medium rounded-md">Fundamentals</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">12 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-900 mb-3 group-hover:text-primary transition">
+                        The Complete Guide to Writing Your First PRD
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Learn the fundamental structure and best practices for creating comprehensive product requirement documents that align stakeholders and drive successful product development.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-neutral-100">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Author" class="w-8 h-8 rounded-full">
+                            <div>
+                                <p class="text-sm font-medium text-neutral-900">Sarah Chen</p>
+                                <p class="text-xs text-neutral-500">Product Lead</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 15, 2024</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-64 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b899a80ffd-087874d4b0bf21e616f3.png" alt="team collaboration meeting with sticky notes on glass wall, product planning session, modern office environment" />
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-md">Case Study</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">18 min read</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-neutral-900 mb-3 group-hover:text-primary transition">
+                        How Airbnb Structures Their Product Requirements
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        An in-depth look at how one of the world's leading tech companies approaches PRD creation, stakeholder alignment, and product specification documentation.
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-neutral-100">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Author" class="w-8 h-8 rounded-full">
+                            <div>
+                                <p class="text-sm font-medium text-neutral-900">Michael Torres</p>
+                                <p class="text-xs text-neutral-500">Senior PM</p>
+                            </div>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 12, 2024</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="main-articles-grid" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/4727a6c8de-aedb04ca0fa38b480a3c.png" alt="user research interview session, product manager taking notes, user testing environment" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-md">Research</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">10 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Conducting User Research for Better PRDs
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Discover effective user research methodologies that inform data-driven product decisions and create user-centric requirement documents.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Emma Wilson</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 10, 2024</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/33bf2641e5-3dc98b50c7143809c6d9.png" alt="product roadmap visualization on large screen, timeline planning, strategic planning session" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-primary/10 text-primary text-xs font-medium rounded-md">Strategy</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">15 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Aligning PRDs with Product Strategy
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Learn how to ensure your product requirements align with overall business objectives and long-term strategic vision.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">James Park</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 8, 2024</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/513e920ac9-0d78dd0e6b7b95723cc0.png" alt="agile sprint board with cards and tasks, scrum methodology, team collaboration tools" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded-md">Agile</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">8 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        PRDs in Agile Development Environments
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Adapt traditional PRD practices for agile workflows while maintaining clarity and comprehensive documentation.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Lisa Kumar</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 6, 2024</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c6b06e3672-9ab302e2a6a765c36ae8.png" alt="technical specification document on screen, API documentation, software architecture diagram" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-md">Technical</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">14 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Writing Technical Requirements Engineers Love
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Bridge the gap between product and engineering with clear, actionable technical specifications that developers appreciate.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Alex Rivera</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 4, 2024</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/09eab97606-14492cd26f95d9aa2c8a.png" alt="stakeholder presentation meeting, business executives reviewing documents, conference room setting" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-pink-100 text-pink-700 text-xs font-medium rounded-md">Communication</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">11 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Stakeholder Management Through PRDs
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Master the art of using PRDs as communication tools to align diverse stakeholders and manage expectations effectively.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Rachel Green</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Jan 2, 2024</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3eccbb46ce-faf7572dc3fe6753ba53.png" alt="data analytics dashboard with metrics and graphs, product analytics, KPI tracking interface" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-md">Metrics</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">9 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Defining Success Metrics in Your PRD
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Learn how to identify, define, and document meaningful success metrics that measure product impact and user value.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">David Kim</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Dec 30, 2023</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d1a40a6cca-21d25c6b8094e728d4e5.png" alt="wireframe sketches and UI mockups on desk, product design process, design thinking tools" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 text-xs font-medium rounded-md">Design</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">13 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Integrating UX Requirements into PRDs
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Seamlessly incorporate user experience considerations and design specifications into comprehensive product documents.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Nina Patel</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Dec 28, 2023</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fce88a4dd5-1cec3a8146cdbcc8bb09.png" alt="security and compliance checklist, data privacy documentation, regulatory requirements" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-red-100 text-red-700 text-xs font-medium rounded-md">Compliance</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">16 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        Documenting Security and Compliance Requirements
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Navigate complex regulatory landscapes by properly documenting security, privacy, and compliance requirements in your PRDs.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Tom Anderson</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Dec 26, 2023</span>
+                    </div>
+                </div>
+            </article>
+            <article class="group bg-white border border-neutral-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+                <div class="h-48 bg-neutral-100 overflow-hidden">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/572ee65a72-5e0602d38a9bcee9e044.png" alt="version control system interface, git branches visualization, collaborative coding environment" />
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="px-2.5 py-1 bg-yellow-100 text-yellow-700 text-xs font-medium rounded-md">Version Control</span>
+                        <span class="text-xs text-neutral-400">•</span>
+                        <span class="text-xs text-neutral-500">7 min read</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-primary transition">
+                        PRD Version Control and Change Management
+                    </h3>
+                    <p class="text-neutral-600 text-sm leading-relaxed mb-4">
+                        Implement effective version control strategies to track changes, manage iterations, and maintain PRD integrity over time.
+                    </p>
+                    <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Author" class="w-7 h-7 rounded-full">
+                            <span class="text-xs font-medium text-neutral-700">Chris Lee</span>
+                        </div>
+                        <span class="text-xs text-neutral-400">Dec 24, 2023</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="templates-section" class="bg-neutral-50 border-y border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-neutral-900 mb-2">PRD Templates & Frameworks</h2>
+                <p class="text-neutral-600">Ready-to-use templates to jumpstart your documentation</p>
+            </div>
+            <a href="#" class="text-sm font-medium text-primary hover:text-sky-700 flex items-center space-x-1">
+                <span>Browse templates</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition">
+                    <i class="fa-solid fa-file-lines text-primary text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2">Basic PRD Template</h3>
+                <p class="text-sm text-neutral-600 mb-4">A simple, straightforward template for standard product requirements documentation.</p>
+                <div class="flex items-center space-x-2 text-xs text-neutral-500">
+                    <i class="fa-solid fa-download"></i>
+                    <span>2.4k downloads</span>
+                </div>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-200 transition">
+                    <i class="fa-solid fa-layer-group text-purple-700 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2">Enterprise PRD</h3>
+                <p class="text-sm text-neutral-600 mb-4">Comprehensive template for large-scale enterprise product development initiatives.</p>
+                <div class="flex items-center space-x-2 text-xs text-neutral-500">
+                    <i class="fa-solid fa-download"></i>
+                    <span>1.8k downloads</span>
+                </div>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-200 transition">
+                    <i class="fa-solid fa-bolt text-emerald-700 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2">Agile PRD Lite</h3>
+                <p class="text-sm text-neutral-600 mb-4">Streamlined template optimized for agile development and rapid iteration cycles.</p>
+                <div class="flex items-center space-x-2 text-xs text-neutral-500">
+                    <i class="fa-solid fa-download"></i>
+                    <span>3.1k downloads</span>
+                </div>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 transition">
+                    <i class="fa-solid fa-mobile-screen text-orange-700 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-2">Mobile App PRD</h3>
+                <p class="text-sm text-neutral-600 mb-4">Specialized template for mobile application development with platform-specific sections.</p>
+                <div class="flex items-center space-x-2 text-xs text-neutral-500">
+                    <i class="fa-solid fa-download"></i>
+                    <span>1.9k downloads</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="resources-library" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-neutral-900 mb-2">Essential Resources</h2>
+            <p class="text-neutral-600">Curated tools, checklists, and guides for product managers</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-list-check text-primary text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-neutral-900 mb-3">PRD Checklist</h3>
+                        <p class="text-neutral-700 text-sm leading-relaxed mb-4">
+                            A comprehensive 47-point checklist covering every essential element of a well-structured PRD. Ensure you never miss critical requirements or specifications.
+                        </p>
+                        <button class="inline-flex items-center space-x-2 text-sm font-medium text-primary hover:text-sky-700">
+                            <span>Download checklist</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-book text-purple-700 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-neutral-900 mb-3">PRD Writing Guide</h3>
+                        <p class="text-neutral-700 text-sm leading-relaxed mb-4">
+                            Complete 120-page guide covering everything from basic principles to advanced techniques. Includes real-world examples and best practices from industry leaders.
+                        </p>
+                        <button class="inline-flex items-center space-x-2 text-sm font-medium text-purple-700 hover:text-purple-900">
+                            <span>Get the guide</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 border border-emerald-200 rounded-xl p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-comments text-emerald-700 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-neutral-900 mb-3">Stakeholder Interview Kit</h3>
+                        <p class="text-neutral-700 text-sm leading-relaxed mb-4">
+                            Pre-written interview questions and frameworks to gather comprehensive requirements from diverse stakeholders across your organization.
+                        </p>
+                        <button class="inline-flex items-center space-x-2 text-sm font-medium text-emerald-700 hover:text-emerald-900">
+                            <span>Access interview kit</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
+                        <i class="fa-solid fa-diagram-project text-orange-700 text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-neutral-900 mb-3">PRD Examples Library</h3>
+                        <p class="text-neutral-700 text-sm leading-relaxed mb-4">
+                            Collection of 25+ real PRDs from successful products at companies like Google, Amazon, and Spotify. Learn from the best in the industry.
+                        </p>
+                        <button class="inline-flex items-center space-x-2 text-sm font-medium text-orange-700 hover:text-orange-900">
+                            <span>Browse examples</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="best-practices" class="bg-neutral-50 border-y border-neutral-100">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="max-w-3xl mb-12">
+            <h2 class="text-2xl font-bold text-neutral-900 mb-3">PRD Best Practices</h2>
+            <p class="text-neutral-600 leading-relaxed">
+                Key principles and proven methodologies that separate exceptional PRDs from mediocre ones. These practices are distilled from hundreds of successful product launches.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-crosshairs text-primary"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Start with the Problem</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Always begin by clearly articulating the user problem or business opportunity. A well-defined problem statement is the foundation of every great PRD.
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-users text-purple-700"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Know Your Audience</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Tailor your PRD's detail level and technical depth based on who will read it. Engineers need different information than executives or designers.
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-chart-line text-emerald-700"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Define Success Metrics</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Establish clear, measurable success criteria upfront. Specify exactly how you'll know if the product achieves its intended goals and impact.
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-ranking-star text-orange-700"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Prioritize Ruthlessly</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Use frameworks like MoSCoW or RICE to clearly distinguish must-haves from nice-to-haves. Help your team focus on what truly matters for launch.
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-pen-to-square text-blue-700"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Be Specific and Actionable</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Avoid vague language and ambiguous requirements. Every specification should be clear enough that different team members interpret it the same way.
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-arrows-rotate text-red-700"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-neutral-900 mb-3">Iterate and Update</h3>
+                <p class="text-sm text-neutral-600 leading-relaxed">
+                    Treat your PRD as a living document. Update it as you learn more through development, testing, and stakeholder feedback throughout the project lifecycle.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tools-integrations" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-neutral-900 mb-3">Tools & Integrations</h2>
+            <p class="text-neutral-600">Popular platforms and tools for creating and managing PRDs</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-solid fa-n text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Notion</h4>
+                <p class="text-xs text-neutral-500">All-in-one workspace</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-solid fa-c text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Confluence</h4>
+                <p class="text-xs text-neutral-500">Team documentation</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-brands fa-figma text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Figma</h4>
+                <p class="text-xs text-neutral-500">Design collaboration</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-brands fa-jira text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Jira</h4>
+                <p class="text-xs text-neutral-500">Project tracking</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-solid fa-m text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Miro</h4>
+                <p class="text-xs text-neutral-500">Visual collaboration</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-6 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 flex flex-col items-center text-center group">
+                <div class="w-16 h-16 bg-neutral-100 rounded-xl flex items-center justify-center mb-3 group-hover:bg-neutral-200 transition">
+                    <i class="fa-solid fa-a text-2xl text-neutral-800"></i>
+                </div>
+                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Asana</h4>
+                <p class="text-xs text-neutral-500">Task management</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="community-section" class="bg-gradient-to-br from-primary/5 to-primary/10 border-y border-primary/20">
+    <div class="max-w-7xl mx-auto px-6 py-20">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 bg-white rounded-full mb-6 shadow-sm">
+                <i class="fa-solid fa-users text-primary"></i>
+                <span class="text-sm font-medium text-neutral-700">Join 15,000+ Product Managers</span>
+            </div>
+            <h2 class="text-3xl font-bold text-neutral-900 mb-4">
+                Connect with the PRD Community
+            </h2>
+            <p class="text-lg text-neutral-600 mb-8 leading-relaxed">
+                Share your experiences, ask questions, and learn from fellow product managers in our active community forum. Get feedback on your PRDs and discover new approaches.
+            </p>
+            <div class="flex items-center justify-center space-x-4">
+                <button class="px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-sky-700 transition shadow-sm">
+                    Join Community
+                </button>
+                <button class="px-6 py-3 bg-white text-neutral-700 font-medium rounded-xl hover:bg-neutral-50 border border-neutral-200 transition">
+                    Browse Discussions
+                </button>
+            </div>
+            <div class="mt-12 grid grid-cols-3 gap-8">
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-2">15k+</div>
+                    <div class="text-sm text-neutral-600">Community Members</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-2">2.5k+</div>
+                    <div class="text-sm text-neutral-600">Discussions</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primary mb-2">98%</div>
+                    <div class="text-sm text-neutral-600">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="newsletter-section" class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="bg-neutral-900 rounded-2xl overflow-hidden">
+            <div class="grid md:grid-cols-2 gap-0">
+                <div class="p-12">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/10 text-white text-xs font-medium rounded-full mb-6">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Weekly Newsletter</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        Stay updated with PRD insights
+                    </h2>
+                    <p class="text-neutral-300 leading-relaxed mb-8">
+                        Get weekly tips, templates, and best practices delivered to your inbox. Join 12,000+ product managers who trust our newsletter.
+                    </p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center space-x-3 text-neutral-300">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-sm">Weekly PRD tips and tricks</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-neutral-300">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-sm">Exclusive templates and resources</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-neutral-300">
+                            <i class="fa-solid fa-check text-primary"></i>
+                            <span class="text-sm">Industry news and trends</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-3">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <button class="px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-sky-700 transition shadow-sm whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+                <div class="relative hidden md:block">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-500/20"></div>
+                    <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8204cade1b-9502fe3851cdc37e10bd.png" alt="newsletter subscription concept, email marketing illustration, modern digital communication design" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer" class="bg-neutral-900 text-white border-t border-neutral-800">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+            <div class="md:col-span-2">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
+                    </div>
+                    <span class="text-white font-semibold text-lg">PRD Hub</span>
+                </div>
+                <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+                    Your comprehensive resource for mastering product requirement documents. Created by product managers, for product managers.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Resources</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Blog</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Templates</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Guides</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Case Studies</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Tools</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">About</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Careers</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Community</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Contact</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Partners</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-4">Legal</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Privacy Policy</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Terms of Service</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Cookie Policy</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">GDPR</a></li>
+                    <li><a href="#" class="text-neutral-400 hover:text-white text-sm transition">Licenses</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-neutral-800 flex flex-col md:flex-row items-center justify-between">
+            <p class="text-neutral-400 text-sm">© 2024 PRD Hub. All rights reserved.</p>
+            <p class="text-neutral-500 text-xs mt-4 md:mt-0">Built with care for the product management community</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

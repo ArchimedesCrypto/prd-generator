@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#0284c7',
+                        'accent-light': '#0ea5e9',
+                        'accent-dark': '#075985',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans antialiased">
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-white text-sm"></i>
+            </div>
+            <span class="text-xl font-semibold text-gray-900">Nexus</span>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Product</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Features</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Resources</a>
+            <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
+        </nav>
+        <div class="flex items-center space-x-3">
+            <button class="text-sm text-gray-600 hover:text-gray-900 px-4 py-2 rounded-xl transition-colors">Sign In</button>
+            <button class="text-sm text-white bg-accent hover:bg-accent-dark px-5 py-2 rounded-xl transition-all shadow-sm">Get Started</button>
+        </div>
+    </div>
+</header>
+
+<main id="main-auth-section" class="pt-24">
+    <div class="max-w-7xl mx-auto px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <section id="auth-hero-content" class="lg:sticky lg:top-32">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 bg-accent/5 border border-accent/10 rounded-full px-4 py-2">
+                            <i class="fa-solid fa-sparkles text-accent text-xs"></i>
+                            <span class="text-xs font-medium text-accent">Trusted by 50,000+ teams</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                            Welcome back to<br/>
+                            <span class="text-accent">productivity</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 leading-relaxed max-w-xl">
+                            Sign in to access your workspace and continue building amazing things with your team. Seamless collaboration starts here.
+                        </p>
+                    </div>
+
+                    <div id="features-list" class="space-y-6 pt-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-shield-halved text-accent text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Enterprise-grade security</h3>
+                                <p class="text-sm text-gray-600">Bank-level encryption and SOC 2 Type II compliance to keep your data safe</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bolt text-accent text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Lightning-fast performance</h3>
+                                <p class="text-sm text-gray-600">Optimized infrastructure ensures your workspace loads in milliseconds</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-users text-accent text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Real-time collaboration</h3>
+                                <p class="text-sm text-gray-600">Work together seamlessly with your team across any device, anywhere</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="testimonial-preview" class="bg-gray-50 rounded-xl p-6 border border-gray-100 mt-12">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-12 h-12 rounded-full object-cover"/>
+                            <div>
+                                <div class="font-semibold text-gray-900 text-sm">Sarah Chen</div>
+                                <div class="text-xs text-gray-600">Product Lead at TechCorp</div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            "Switching to Nexus transformed how our team collaborates. The interface is incredibly intuitive, and the performance is unmatched."
+                        </p>
+                        <div class="flex items-center space-x-1 mt-4">
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                            <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="auth-form-container" class="lg:pl-8">
+                <div class="bg-white border border-gray-100 rounded-xl shadow-sm p-8 lg:p-10">
+                    
+                    <div id="auth-tabs" class="flex items-center space-x-2 bg-gray-50 rounded-xl p-1 mb-8">
+                        <button id="signin-tab" class="flex-1 py-3 px-4 rounded-lg bg-white shadow-sm text-sm font-medium text-gray-900 transition-all">
+                            Sign In
+                        </button>
+                        <button id="signup-tab" class="flex-1 py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 transition-all">
+                            Sign Up
+                        </button>
+                    </div>
+
+                    <div id="signin-form">
+                        <div class="space-y-6 mb-8">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+                                <div class="relative">
+                                    <input type="email" placeholder="name@company.com" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                    <i class="fa-regular fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                                    <a href="#" class="text-xs text-accent hover:text-accent-dark transition-colors">Forgot password?</a>
+                                </div>
+                                <div class="relative">
+                                    <input type="password" placeholder="Enter your password" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                    <i class="fa-regular fa-eye absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm cursor-pointer hover:text-gray-600"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent/20"/>
+                                    <span class="text-sm text-gray-600">Remember me</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="w-full bg-accent hover:bg-accent-dark text-white py-3.5 px-6 rounded-xl font-medium text-sm transition-all shadow-sm mb-6">
+                            Sign in to your account
+                        </button>
+
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-200"></div>
+                            </div>
+                            <div class="relative flex justify-center text-xs">
+                                <span class="px-4 bg-white text-gray-500">Or continue with</span>
+                            </div>
+                        </div>
+
+                        <div id="sso-buttons" class="space-y-3 mb-6">
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                </svg>
+                                <span>Continue with Google</span>
+                            </button>
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <i class="fa-brands fa-github text-lg"></i>
+                                <span>Continue with GitHub</span>
+                            </button>
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <i class="fa-brands fa-microsoft text-lg text-blue-600"></i>
+                                <span>Continue with Microsoft</span>
+                            </button>
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <i class="fa-brands fa-slack text-lg text-purple-600"></i>
+                                <span>Continue with Slack</span>
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">
+                                Don't have an account? 
+                                <a href="#" class="text-accent hover:text-accent-dark font-medium transition-colors">Sign up for free</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="signup-form" class="hidden">
+                        <div class="space-y-6 mb-8">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">First name</label>
+                                    <input type="text" placeholder="John" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Last name</label>
+                                    <input type="text" placeholder="Doe" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Work email</label>
+                                <div class="relative">
+                                    <input type="email" placeholder="name@company.com" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                    <i class="fa-regular fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Create password</label>
+                                <div class="relative">
+                                    <input type="password" placeholder="Minimum 8 characters" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                                    <i class="fa-regular fa-eye absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm cursor-pointer hover:text-gray-600"></i>
+                                </div>
+                                <div class="mt-2 space-y-1">
+                                    <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                        <i class="fa-solid fa-circle text-[4px]"></i>
+                                        <span>At least 8 characters</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                        <i class="fa-solid fa-circle text-[4px]"></i>
+                                        <span>Mix of letters and numbers</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Company name</label>
+                                <input type="text" placeholder="Acme Inc." class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-sm"/>
+                            </div>
+                            <div>
+                                <label class="flex items-start space-x-3 cursor-pointer">
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-accent focus:ring-accent/20 mt-0.5"/>
+                                    <span class="text-sm text-gray-600 leading-relaxed">
+                                        I agree to the <a href="#" class="text-accent hover:text-accent-dark">Terms of Service</a> and <a href="#" class="text-accent hover:text-accent-dark">Privacy Policy</a>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="w-full bg-accent hover:bg-accent-dark text-white py-3.5 px-6 rounded-xl font-medium text-sm transition-all shadow-sm mb-6">
+                            Create your account
+                        </button>
+
+                        <div class="relative mb-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-200"></div>
+                            </div>
+                            <div class="relative flex justify-center text-xs">
+                                <span class="px-4 bg-white text-gray-500">Or sign up with</span>
+                            </div>
+                        </div>
+
+                        <div id="sso-buttons-signup" class="space-y-3 mb-6">
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                </svg>
+                                <span>Continue with Google</span>
+                            </button>
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <i class="fa-brands fa-github text-lg"></i>
+                                <span>Continue with GitHub</span>
+                            </button>
+                            <button class="w-full flex items-center justify-center space-x-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 px-6 rounded-xl transition-all text-sm font-medium text-gray-700">
+                                <i class="fa-brands fa-microsoft text-lg text-blue-600"></i>
+                                <span>Continue with Microsoft</span>
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">
+                                Already have an account? 
+                                <a href="#" class="text-accent hover:text-accent-dark font-medium transition-colors">Sign in</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="security-badges" class="mt-8 flex items-center justify-center space-x-8">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-lock text-gray-400 text-sm"></i>
+                        <span class="text-xs text-gray-500">256-bit SSL</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-shield-halved text-gray-400 text-sm"></i>
+                        <span class="text-xs text-gray-500">SOC 2 Compliant</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-certificate text-gray-400 text-sm"></i>
+                        <span class="text-xs text-gray-500">GDPR Ready</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<section id="trust-indicators" class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-12">
+            <p class="text-xs uppercase tracking-wider text-gray-500 font-medium mb-8">Trusted by industry leaders</p>
+            <div class="flex items-center justify-center space-x-12 opacity-40">
+                <i class="fa-brands fa-google text-4xl text-gray-900"></i>
+                <i class="fa-brands fa-microsoft text-4xl text-gray-900"></i>
+                <i class="fa-brands fa-amazon text-4xl text-gray-900"></i>
+                <i class="fa-brands fa-meta text-4xl text-gray-900"></i>
+                <i class="fa-brands fa-apple text-4xl text-gray-900"></i>
+                <i class="fa-brands fa-netflix text-4xl text-gray-900"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features-grid" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Everything you need to succeed</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Powerful features designed to help your team collaborate better and ship faster</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="feature-1" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-rocket text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Lightning Fast</h3>
+                <p class="text-gray-600 leading-relaxed">Experience blazing fast performance with our optimized infrastructure that handles millions of requests daily.</p>
+            </div>
+
+            <div id="feature-2" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-users text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Team Collaboration</h3>
+                <p class="text-gray-600 leading-relaxed">Work together in real-time with your team. See changes instantly and stay in sync across all devices.</p>
+            </div>
+
+            <div id="feature-3" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-shield text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Enterprise Security</h3>
+                <p class="text-gray-600 leading-relaxed">Bank-level encryption, SSO, and compliance with SOC 2, GDPR, and HIPAA standards.</p>
+            </div>
+
+            <div id="feature-4" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-chart-line text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Advanced Analytics</h3>
+                <p class="text-gray-600 leading-relaxed">Get detailed insights into your team's productivity with comprehensive analytics and reporting.</p>
+            </div>
+
+            <div id="feature-5" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-puzzle-piece text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Integrations</h3>
+                <p class="text-gray-600 leading-relaxed">Connect with 100+ tools you already use. Slack, GitHub, Jira, and many more integrations.</p>
+            </div>
+
+            <div id="feature-6" class="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-mobile text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Mobile Apps</h3>
+                <p class="text-gray-600 leading-relaxed">Native iOS and Android apps that work offline and sync seamlessly when you're back online.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials-section" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Loved by teams worldwide</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">See what our customers have to say about their experience</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="testimonial-1" class="bg-white border border-gray-100 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">"Nexus has completely transformed how our team works. The interface is intuitive and the performance is incredible. We've seen a 40% increase in productivity."</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Michael Rodriguez</div>
+                        <div class="text-xs text-gray-600">VP Engineering, TechStart</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="testimonial-2" class="bg-white border border-gray-100 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">"The best collaboration tool we've ever used. The real-time features are seamless and the mobile apps work flawlessly. Highly recommend!"</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Emily Watson</div>
+                        <div class="text-xs text-gray-600">Product Manager, InnovateCo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="testimonial-3" class="bg-white border border-gray-100 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                    <i class="fa-solid fa-star text-amber-400"></i>
+                </div>
+                <p class="text-gray-700 mb-6 leading-relaxed">"Security was our top concern and Nexus exceeded all expectations. SOC 2 compliance and enterprise-grade features at an amazing price point."</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">David Park</div>
+                        <div class="text-xs text-gray-600">CTO, SecureData Inc</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="stats-section" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+            <div id="stat-1" class="text-center">
+                <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">50K+</div>
+                <div class="text-sm text-gray-600">Active Teams</div>
+            </div>
+            <div id="stat-2" class="text-center">
+                <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">99.9%</div>
+                <div class="text-sm text-gray-600">Uptime SLA</div>
+            </div>
+            <div id="stat-3" class="text-center">
+                <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">2M+</div>
+                <div class="text-sm text-gray-600">Tasks Completed</div>
+            </div>
+            <div id="stat-4" class="text-center">
+                <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">150+</div>
+                <div class="text-sm text-gray-600">Countries</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="integrations-section" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Integrates with your favorite tools</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Connect Nexus with the tools you already use every day</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div id="integration-1" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-slack text-4xl text-purple-600"></i>
+            </div>
+            <div id="integration-2" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-github text-4xl text-gray-900"></i>
+            </div>
+            <div id="integration-3" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-jira text-4xl text-blue-600"></i>
+            </div>
+            <div id="integration-4" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-figma text-4xl text-pink-600"></i>
+            </div>
+            <div id="integration-5" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-trello text-4xl text-blue-500"></i>
+            </div>
+            <div id="integration-6" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-google-drive text-4xl text-yellow-500"></i>
+            </div>
+            <div id="integration-7" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-dropbox text-4xl text-blue-600"></i>
+            </div>
+            <div id="integration-8" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-microsoft text-4xl text-blue-500"></i>
+            </div>
+            <div id="integration-9" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-notion text-4xl text-gray-900"></i>
+            </div>
+            <div id="integration-10" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-asana text-4xl text-red-500"></i>
+            </div>
+            <div id="integration-11" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-discord text-4xl text-indigo-600"></i>
+            </div>
+            <div id="integration-12" class="bg-white border border-gray-100 rounded-xl p-6 flex items-center justify-center hover:shadow-md transition-all">
+                <i class="fa-brands fa-stripe text-4xl text-purple-600"></i>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center space-x-2 text-accent hover:text-accent-dark font-medium transition-colors">
+                <span>View all 100+ integrations</span>
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="pricing-preview" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Simple, transparent pricing</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose the plan that's right for your team</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div id="pricing-starter" class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all">
+                <div class="text-sm font-medium text-gray-600 uppercase tracking-wider mb-2">Starter</div>
+                <div class="mb-6">
+                    <span class="text-4xl font-bold text-gray-900">$9</span>
+                    <span class="text-gray-600">/user/month</span>
+                </div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Up to 10 team members</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>5GB storage per user</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Basic integrations</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Email support</span>
+                    </li>
+                </ul>
+                <button class="w-full border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 px-6 rounded-xl font-medium text-sm transition-all">
+                    Get Started
+                </button>
+            </div>
+
+            <div id="pricing-pro" class="bg-accent border-2 border-accent rounded-xl p-8 relative shadow-lg transform scale-105">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent-dark text-white text-xs font-medium px-4 py-1 rounded-full">
+                    Most Popular
+                </div>
+                <div class="text-sm font-medium text-white uppercase tracking-wider mb-2">Professional</div>
+                <div class="mb-6">
+                    <span class="text-4xl font-bold text-white">$29</span>
+                    <span class="text-white/80">/user/month</span>
+                </div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center space-x-3 text-sm text-white">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Unlimited team members</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-white">
+                        <i class="fa-solid fa-check"></i>
+                        <span>100GB storage per user</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-white">
+                        <i class="fa-solid fa-check"></i>
+                        <span>All integrations</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-white">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Priority support</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-white">
+                        <i class="fa-solid fa-check"></i>
+                        <span>Advanced analytics</span>
+                    </li>
+                </ul>
+                <button class="w-full bg-white text-accent hover:bg-gray-50 py-3 px-6 rounded-xl font-medium text-sm transition-all">
+                    Get Started
+                </button>
+            </div>
+
+            <div id="pricing-enterprise" class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all">
+                <div class="text-sm font-medium text-gray-600 uppercase tracking-wider mb-2">Enterprise</div>
+                <div class="mb-6">
+                    <span class="text-4xl font-bold text-gray-900">Custom</span>
+                </div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Unlimited everything</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Dedicated support</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Custom integrations</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>SLA guarantee</span>
+                    </li>
+                    <li class="flex items-center space-x-3 text-sm text-gray-700">
+                        <i class="fa-solid fa-check text-accent"></i>
+                        <span>Advanced security</span>
+                    </li>
+                </ul>
+                <button class="w-full border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 px-6 rounded-xl font-medium text-sm transition-all">
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq-section" class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
+            <p class="text-lg text-gray-600">Everything you need to know about Nexus</p>
+        </div>
+
+        <div class="space-y-4">
+            <div id="faq-1" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">How secure is my data?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">Your data is encrypted at rest and in transit using bank-level 256-bit encryption. We're SOC 2 Type II certified and comply with GDPR, HIPAA, and other major security standards.</p>
+            </div>
+
+            <div id="faq-2" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">Can I cancel my subscription anytime?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Your data will remain accessible for 30 days after cancellation.</p>
+            </div>
+
+            <div id="faq-3" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">Do you offer a free trial?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">Yes! We offer a 14-day free trial with full access to all Professional features. No credit card required to start your trial.</p>
+            </div>
+
+            <div id="faq-4" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">What integrations do you support?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">We support over 100 integrations including Slack, GitHub, Jira, Figma, Google Drive, Microsoft 365, and many more. We also offer a robust API for custom integrations.</p>
+            </div>
+
+            <div id="faq-5" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">Is there a mobile app?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">Yes, we have native iOS and Android apps that work seamlessly with the desktop version. All features are available on mobile, and the app works offline with automatic sync.</p>
+            </div>
+
+            <div id="faq-6" class="bg-white border border-gray-100 rounded-xl p-6">
+                <div class="flex items-center justify-between cursor-pointer">
+                    <h3 class="text-lg font-semibold text-gray-900">How does billing work?</h3>
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                </div>
+                <p class="text-gray-600 mt-4 leading-relaxed">We bill monthly or annually based on the number of active users. You can add or remove users at any time, and we'll prorate the charges accordingly. Annual plans receive a 20% discount.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="cta-section" class="py-20 bg-accent">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Ready to get started?</h2>
+        <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">Join 50,000+ teams who trust Nexus to power their workflows. Start your free trial today.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <button class="w-full sm:w-auto bg-white text-accent hover:bg-gray-50 px-8 py-4 rounded-xl font-medium text-sm transition-all shadow-lg">
+                Start Free Trial
+            </button>
+            <button class="w-full sm:w-auto border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-medium text-sm transition-all">
+                Schedule Demo
+            </button>
+        </div>
+        <p class="text-sm text-white/70 mt-6">No credit card required • 14-day free trial • Cancel anytime</p>
+    </div>
+</section>
+
+<footer id="footer" class="bg-gray-900 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-12">
+            <div class="col-span-2 md:col-span-4 lg:col-span-1">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-bolt text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-semibold text-white">Nexus</span>
+                </div>
+                <p class="text-sm leading-relaxed mb-4">Building the future of team collaboration, one feature at a time.</p>
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-accent rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-brands fa-twitter text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-accent rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-brands fa-linkedin text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-accent rounded-lg flex items-center justify-center transition-colors">
+                        <i class="fa-brands fa-github text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm">Product</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Integrations</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Changelog</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Roadmap</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm">Company</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Press</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm">Resources</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">API Reference</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm">Legal</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Compliance</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <p class="text-sm">© 2024 Nexus. All rights reserved.</p>
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Cookie Settings</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('load', function() {
+    const signinTab = document.getElementById('signin-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const signinForm = document.getElementById('signin-form');
+    const signupForm = document.getElementById('signup-form');
+
+    signinTab.addEventListener('click', function() {
+        signinTab.classList.add('bg-white', 'shadow-sm', 'text-gray-900');
+        signinTab.classList.remove('text-gray-600');
+        signupTab.classList.remove('bg-white', 'shadow-sm', 'text-gray-900');
+        signupTab.classList.add('text-gray-600');
+        signinForm.classList.remove('hidden');
+        signupForm.classList.add('hidden');
+    });
+
+    signupTab.addEventListener('click', function() {
+        signupTab.classList.add('bg-white', 'shadow-sm', 'text-gray-900');
+        signupTab.classList.remove('text-gray-600');
+        signinTab.classList.remove('bg-white', 'shadow-sm', 'text-gray-900');
+        signinTab.classList.add('text-gray-600');
+        signupForm.classList.remove('hidden');
+        signinForm.classList.add('hidden');
+    });
+});
+</script>
+
+</body>
+</html>

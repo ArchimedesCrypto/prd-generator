@@ -1,798 +1,1097 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Billing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>::-webkit-scrollbar { display: none;}</style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'neutral': {
-                            50: '#fafafa',
-                            100: '#f5f5f5',
-                            200: '#e5e5e5',
-                            300: '#d4d4d4',
-                            400: '#a3a3a3',
-                            500: '#737373',
-                            600: '#525252',
-                            700: '#404040',
-                            800: '#262626',
-                            900: '#171717',
-                        },
-                        'accent': {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        }
-                    }
+                        accent: '#0284c7',
+                    },
                 }
             }
         }
     </script>
 </head>
-<body class="font-sans bg-neutral-50 text-neutral-800">
+<body class="bg-gray-50 font-sans antialiased">
 
-<header id="header" class="bg-white border-b border-neutral-200 sticky top-0 z-50">
-    <nav class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex items-center space-x-12">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-accent-600 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
-                    </div>
-                    <span class="text-lg font-semibold text-neutral-900">PRD Generator</span>
+<div id="header" class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
+    <div class="flex items-center justify-between px-6 h-16">
+        <div class="flex items-center space-x-8">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-layer-group text-white text-sm"></i>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Home</a>
-                    <a href="#" class="text-sm font-medium text-neutral-900 hover:text-accent-600 transition-colors">Dashboard</a>
-                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">History</a>
-                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Transactions</a>
-                    <a href="#" class="text-sm font-medium text-neutral-600 hover:text-accent-600 transition-colors">Blog</a>
-                </div>
+                <span class="text-lg font-semibold text-gray-900">FinanceHub</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <button class="w-10 h-10 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                    <i class="fa-regular fa-bell text-neutral-600"></i>
-                </button>
-                <div class="w-10 h-10 rounded-lg bg-accent-600 flex items-center justify-center text-white font-semibold text-sm cursor-pointer">
-                    JD
-                </div>
-            </div>
+            <nav class="flex items-center space-x-1">
+                <a href="#" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">Dashboard</a>
+                <a href="#" class="px-3 py-2 text-sm text-gray-900 bg-gray-100 rounded-lg">Billing</a>
+                <a href="#" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">Analytics</a>
+                <a href="#" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">Settings</a>
+            </nav>
         </div>
-    </nav>
-</header>
-
-<div class="flex">
-    <aside id="sidebar" class="w-64 bg-white border-r border-neutral-200 min-h-screen sticky top-16">
-        <div class="p-6">
-            <button class="w-full bg-accent-600 text-white text-sm font-semibold px-4 py-3 rounded-lg hover:bg-accent-700 transition-colors shadow-sm flex items-center justify-center space-x-2">
-                <i class="fa-solid fa-plus"></i>
-                <span>New PRD</span>
+        <div class="flex items-center space-x-4">
+            <button class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all">
+                <i class="fa-regular fa-bell text-sm"></i>
             </button>
+            <button class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all">
+                <i class="fa-regular fa-circle-question text-sm"></i>
+            </button>
+            <div class="w-8 h-8 bg-gradient-to-br from-accent to-blue-600 rounded-lg flex items-center justify-center">
+                <span class="text-xs font-medium text-white">JD</span>
+            </div>
         </div>
-        <nav class="px-3">
-            <div class="mb-6">
-                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Workspace</div>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-accent-50 text-accent-700 font-medium text-sm">
-                    <i class="fa-solid fa-grip w-5"></i>
-                    <span>All Documents</span>
-                    <span class="ml-auto bg-accent-600 text-white text-xs px-2 py-0.5 rounded-full">24</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-star w-5"></i>
-                    <span>Favorites</span>
-                    <span class="ml-auto text-neutral-400 text-xs">8</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-clock w-5"></i>
-                    <span>Recent</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-share-nodes w-5"></i>
-                    <span>Shared with me</span>
-                    <span class="ml-auto text-neutral-400 text-xs">3</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-trash w-5"></i>
-                    <span>Trash</span>
-                </a>
+    </div>
+</div>
+
+<div class="flex pt-16">
+    <aside id="sidebar" class="fixed left-0 top-16 bottom-0 w-64 bg-white border-r border-gray-200 overflow-y-auto">
+        <div class="p-6">
+            <div class="mb-8">
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Billing</div>
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg">
+                        <i class="fa-regular fa-credit-card w-4 mr-3 text-accent"></i>
+                        Overview
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-regular fa-file-lines w-4 mr-3"></i>
+                        Invoices
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-regular fa-clock w-4 mr-3"></i>
+                        Transactions
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-solid fa-wallet w-4 mr-3"></i>
+                        Payment Methods
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-solid fa-chart-line w-4 mr-3"></i>
+                        Usage & Limits
+                    </a>
+                </nav>
             </div>
-            <div class="mb-6">
-                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider flex items-center justify-between">
-                    <span>Templates</span>
-                    <button class="text-accent-600 hover:text-accent-700">
-                        <i class="fa-solid fa-plus text-xs"></i>
-                    </button>
+
+            <div class="mb-8">
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Account</div>
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-regular fa-user w-4 mr-3"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-solid fa-users w-4 mr-3"></i>
+                        Team
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-solid fa-gear w-4 mr-3"></i>
+                        Preferences
+                    </a>
+                    <a href="#" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-all">
+                        <i class="fa-solid fa-shield-halved w-4 mr-3"></i>
+                        Security
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 bg-gradient-to-br from-accent/5 to-blue-50 rounded-xl border border-accent/10">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-sparkles text-accent text-xs"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-gray-900 mb-1">Upgrade to Pro</div>
+                        <div class="text-xs text-gray-600 mb-3">Unlock advanced features and unlimited access</div>
+                        <button class="w-full px-3 py-1.5 bg-accent text-white text-xs font-medium rounded-lg hover:bg-accent/90 transition-all">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-mobile-screen-button w-5 text-blue-500"></i>
-                    <span>Mobile App</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-globe w-5 text-purple-500"></i>
-                    <span>Web Platform</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-rocket w-5 text-green-500"></i>
-                    <span>Feature</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <i class="fa-solid fa-puzzle-piece w-5 text-amber-500"></i>
-                    <span>API Integration</span>
-                </a>
-            </div>
-            <div>
-                <div class="px-3 mb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Projects</div>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                    <span>Q1 Roadmap</span>
-                    <span class="ml-auto text-neutral-400 text-xs">12</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                    <span>Mobile Redesign</span>
-                    <span class="ml-auto text-neutral-400 text-xs">8</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-100 transition-colors text-sm">
-                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
-                    <span>API v2</span>
-                    <span class="ml-auto text-neutral-400 text-xs">4</span>
-                </a>
-            </div>
-        </nav>
-        <div class="absolute bottom-0 w-64 p-4 border-t border-neutral-200">
-            <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-semibold text-accent-900">Pro Plan</span>
-                    <i class="fa-solid fa-crown text-accent-600"></i>
-                </div>
-                <div class="text-xs text-accent-700 mb-3">12 days left in trial</div>
-                <button class="w-full bg-accent-600 text-white text-xs font-semibold py-2 rounded-lg hover:bg-accent-700 transition-colors">
-                    Upgrade Now
-                </button>
             </div>
         </div>
     </aside>
 
-    <main id="main-content" class="flex-1 p-8">
-        <div id="dashboard-header" class="mb-8">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <h1 class="text-3xl font-bold text-neutral-900 mb-2">Dashboard</h1>
-                    <p class="text-neutral-600">Welcome back! Here's what's happening with your PRDs.</p>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <input type="text" placeholder="Search documents..." class="pl-10 pr-4 py-2.5 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent w-64">
-                        <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 text-sm"></i>
+    <main class="ml-64 flex-1 p-8">
+        <div class="max-w-7xl mx-auto">
+            <div id="page-header" class="mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <h1 class="text-3xl font-semibold text-gray-900">Billing & Payments</h1>
+                    <div class="flex items-center space-x-3">
+                        <button class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 bg-white border border-gray-200 rounded-xl hover:border-gray-300 transition-all">
+                            <i class="fa-solid fa-download mr-2 text-xs"></i>
+                            Export
+                        </button>
+                        <button class="px-4 py-2 text-sm text-white bg-accent rounded-xl hover:bg-accent/90 transition-all shadow-sm">
+                            <i class="fa-solid fa-plus mr-2 text-xs"></i>
+                            Add Payment Method
+                        </button>
                     </div>
-                    <button class="w-10 h-10 border border-neutral-200 rounded-lg flex items-center justify-center hover:bg-neutral-100 transition-colors">
-                        <i class="fa-solid fa-filter text-neutral-600"></i>
-                    </button>
-                    <button class="w-10 h-10 border border-neutral-200 rounded-lg flex items-center justify-center hover:bg-neutral-100 transition-colors">
-                        <i class="fa-solid fa-sort text-neutral-600"></i>
-                    </button>
                 </div>
+                <p class="text-sm text-gray-500">Manage your subscription, payment methods, and view transaction history</p>
             </div>
-        </div>
 
-        <div id="stats-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-file-lines text-blue-600 text-xl"></i>
-                    </div>
-                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
-                </div>
-                <div class="text-3xl font-bold text-neutral-900 mb-1">24</div>
-                <div class="text-sm text-neutral-600">Total PRDs</div>
-            </div>
-            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-pen-to-square text-purple-600 text-xl"></i>
-                    </div>
-                    <span class="text-xs font-medium text-orange-600 bg-orange-50 px-2 py-1 rounded-full">5 active</span>
-                </div>
-                <div class="text-3xl font-bold text-neutral-900 mb-1">8</div>
-                <div class="text-sm text-neutral-600">In Progress</div>
-            </div>
-            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-check-circle text-green-600 text-xl"></i>
-                    </div>
-                    <span class="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full">+8%</span>
-                </div>
-                <div class="text-3xl font-bold text-neutral-900 mb-1">16</div>
-                <div class="text-sm text-neutral-600">Completed</div>
-            </div>
-            <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
-                        <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
-                    </div>
-                    <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2 py-1 rounded-full">2.3s avg</span>
-                </div>
-                <div class="text-3xl font-bold text-neutral-900 mb-1">3.2h</div>
-                <div class="text-sm text-neutral-600">Time Saved</div>
-            </div>
-        </div>
-
-        <div id="quick-actions-section" class="mb-8">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-neutral-900">Quick Actions</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-wand-magic-sparkles text-white text-xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-neutral-900 mb-1">Generate New PRD</h3>
-                    <p class="text-sm text-neutral-600">Start from scratch with AI</p>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-file-alt text-white text-xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-neutral-900 mb-1">Use Template</h3>
-                    <p class="text-sm text-neutral-600">Choose from library</p>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-upload text-white text-xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-neutral-900 mb-1">Import Document</h3>
-                    <p class="text-sm text-neutral-600">Upload existing PRD</p>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all text-left group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-users text-white text-xl"></i>
-                    </div>
-                    <h3 class="font-semibold text-neutral-900 mb-1">Team Workspace</h3>
-                    <p class="text-sm text-neutral-600">Collaborate with team</p>
-                </button>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-            <div id="recent-documents-section" class="lg:col-span-2">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-xl font-bold text-neutral-900">Recent Documents</h2>
-                    <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all</a>
-                </div>
-                <div class="space-y-3">
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
-                        <div class="flex items-start justify-between mb-3">
-                            <div class="flex items-start space-x-4 flex-1">
-                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-mobile-screen-button text-blue-600 text-lg"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Mobile App Redesign PRD</h3>
-                                    <p class="text-sm text-neutral-600 mb-2">Complete redesign of the mobile application with new user flows and features...</p>
-                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span>Updated 2 hours ago</span>
-                                        </span>
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-solid fa-user"></i>
-                                            <span>John Doe</span>
-                                        </span>
-                                        <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Completed</span>
-                                    </div>
-                                </div>
+            <section id="subscription-status" class="mb-8">
+                <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <h2 class="text-lg font-semibold text-gray-900">Current Subscription</h2>
+                                <span class="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Active</span>
                             </div>
-                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
-                            </button>
+                            <p class="text-sm text-gray-500">Your subscription renews on March 15, 2024</p>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex -space-x-2">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                        <button class="text-sm text-accent hover:text-accent/80 font-medium">Manage Plan</button>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-6">
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="text-xs text-gray-500 mb-1">Plan Type</div>
+                            <div class="text-lg font-semibold text-gray-900">Professional</div>
+                            <div class="text-xs text-gray-500 mt-1">Monthly billing</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="text-xs text-gray-500 mb-1">Monthly Cost</div>
+                            <div class="text-lg font-semibold text-gray-900">$49.00</div>
+                            <div class="text-xs text-emerald-600 mt-1">
+                                <i class="fa-solid fa-arrow-down text-[10px] mr-1"></i>
+                                Save $98/year
                             </div>
-                            <span class="text-xs text-neutral-500">+2 collaborators</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="text-xs text-gray-500 mb-1">Next Billing Date</div>
+                            <div class="text-lg font-semibold text-gray-900">Mar 15</div>
+                            <div class="text-xs text-gray-500 mt-1">21 days remaining</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="text-xs text-gray-500 mb-1">Team Members</div>
+                            <div class="text-lg font-semibold text-gray-900">8 / 10</div>
+                            <div class="text-xs text-gray-500 mt-1">2 seats available</div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
-                        <div class="flex items-start justify-between mb-3">
-                            <div class="flex items-start space-x-4 flex-1">
-                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-globe text-purple-600 text-lg"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Web Dashboard Enhancement</h3>
-                                    <p class="text-sm text-neutral-600 mb-2">Adding advanced analytics and reporting features to the admin dashboard...</p>
-                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span>Updated 5 hours ago</span>
-                                        </span>
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-solid fa-user"></i>
-                                            <span>Sarah Williams</span>
-                                        </span>
-                                        <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">In Progress</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
-                            </button>
-                        </div>
+
+                    <div class="mt-6 pt-6 border-t border-gray-100">
                         <div class="flex items-center justify-between">
-                            <div class="flex -space-x-2">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 text-sm"></i>
+                                    <span class="text-sm text-gray-600">Unlimited projects</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 text-sm"></i>
+                                    <span class="text-sm text-gray-600">Advanced analytics</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 text-sm"></i>
+                                    <span class="text-sm text-gray-600">Priority support</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 text-sm"></i>
+                                    <span class="text-sm text-gray-600">Custom integrations</span>
+                                </div>
+                            </div>
+                            <button class="text-sm text-accent hover:text-accent/80 font-medium">View All Features</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="payment-methods" class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Payment Methods</h2>
+                    <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                        <i class="fa-solid fa-plus mr-1 text-xs"></i>
+                        Add New
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-3 right-3">
+                            <span class="px-2 py-0.5 bg-accent/10 text-accent text-xs font-medium rounded-full">Primary</span>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-brands fa-cc-visa text-white text-2xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900 mb-1">Visa ending in 4242</div>
+                                <div class="text-xs text-gray-500 mb-3">Expires 12/2025</div>
+                                <div class="flex items-center space-x-3">
+                                    <button class="text-xs text-accent hover:text-accent/80 font-medium">Edit</button>
+                                    <button class="text-xs text-gray-500 hover:text-gray-700">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm relative overflow-hidden">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-brands fa-cc-mastercard text-white text-2xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900 mb-1">Mastercard ending in 8888</div>
+                                <div class="text-xs text-gray-500 mb-3">Expires 08/2024</div>
+                                <div class="flex items-center space-x-3">
+                                    <button class="text-xs text-accent hover:text-accent/80 font-medium">Set as Primary</button>
+                                    <button class="text-xs text-gray-500 hover:text-gray-700">Edit</button>
+                                    <button class="text-xs text-gray-500 hover:text-gray-700">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm relative overflow-hidden">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-brands fa-paypal text-white text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900 mb-1">PayPal</div>
+                                <div class="text-xs text-gray-500 mb-3">john.doe@email.com</div>
+                                <div class="flex items-center space-x-3">
+                                    <button class="text-xs text-accent hover:text-accent/80 font-medium">Set as Primary</button>
+                                    <button class="text-xs text-gray-500 hover:text-gray-700">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-dashed border-gray-300 p-5 flex items-center justify-center cursor-pointer hover:border-accent hover:bg-accent/5 transition-all">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                                <i class="fa-solid fa-plus text-gray-400 text-lg"></i>
+                            </div>
+                            <div class="text-sm font-medium text-gray-600">Add Payment Method</div>
+                            <div class="text-xs text-gray-500 mt-1">Credit card, debit card or PayPal</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="billing-information" class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Billing Information</h2>
+                <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-xs text-gray-500 mb-2">Company Name</div>
+                            <div class="text-sm font-medium text-gray-900">Acme Corporation</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 mb-2">Tax ID</div>
+                            <div class="text-sm font-medium text-gray-900">US-123456789</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 mb-2">Billing Email</div>
+                            <div class="text-sm font-medium text-gray-900">billing@acmecorp.com</div>
+                        </div>
+                        <div>
+                            <div class="text-xs text-gray-500 mb-2">Phone Number</div>
+                            <div class="text-sm font-medium text-gray-900">+1 (555) 123-4567</div>
+                        </div>
+                        <div class="col-span-2">
+                            <div class="text-xs text-gray-500 mb-2">Billing Address</div>
+                            <div class="text-sm font-medium text-gray-900">123 Business Ave, Suite 100, San Francisco, CA 94102, United States</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                        <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                            <i class="fa-solid fa-pen text-xs mr-2"></i>
+                            Edit Billing Information
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="usage-statistics" class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Current Usage Period</h2>
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-server text-accent"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">75% used</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mb-1">API Requests</div>
+                        <div class="text-2xl font-semibold text-gray-900 mb-2">75,432</div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-accent h-1.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">of 100,000 requests</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-database text-purple-600"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">42% used</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mb-1">Storage</div>
+                        <div class="text-2xl font-semibold text-gray-900 mb-2">42 GB</div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-purple-600 h-1.5 rounded-full" style="width: 42%"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">of 100 GB storage</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-users text-emerald-600"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">80% used</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mb-1">Team Seats</div>
+                        <div class="text-2xl font-semibold text-gray-900 mb-2">8 / 10</div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-emerald-600 h-1.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">2 seats available</div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-bolt text-orange-600"></i>
+                            </div>
+                            <span class="text-xs text-emerald-600">Unlimited</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mb-1">Projects</div>
+                        <div class="text-2xl font-semibold text-gray-900 mb-2">24</div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-orange-600 h-1.5 rounded-full" style="width: 100%"></div>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">No limit on plan</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="invoice-list" class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Recent Invoices</h2>
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <input type="text" placeholder="Search invoices..." class="w-64 pl-9 pr-4 py-2 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent">
+                            <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        </div>
+                        <button class="px-4 py-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-xl hover:border-gray-300 transition-all">
+                            <i class="fa-solid fa-filter mr-2 text-xs"></i>
+                            Filter
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gray-50 border-b border-gray-200">
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invoice</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Description</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fa-regular fa-file-lines text-accent text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">INV-2024-0215</div>
+                                                <div class="text-xs text-gray-500">February billing</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Feb 15, 2024</div>
+                                        <div class="text-xs text-gray-500">Due: Feb 22, 2024</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Professional Plan</div>
+                                        <div class="text-xs text-gray-500">Monthly subscription</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-sm text-accent hover:text-accent/80 font-medium mr-3">
+                                            <i class="fa-solid fa-download text-xs mr-1"></i>
+                                            Download
+                                        </button>
+                                        <button class="text-sm text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fa-regular fa-file-lines text-accent text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">INV-2024-0115</div>
+                                                <div class="text-xs text-gray-500">January billing</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Jan 15, 2024</div>
+                                        <div class="text-xs text-gray-500">Due: Jan 22, 2024</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Professional Plan</div>
+                                        <div class="text-xs text-gray-500">Monthly subscription</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-sm text-accent hover:text-accent/80 font-medium mr-3">
+                                            <i class="fa-solid fa-download text-xs mr-1"></i>
+                                            Download
+                                        </button>
+                                        <button class="text-sm text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fa-regular fa-file-lines text-accent text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">INV-2023-1215</div>
+                                                <div class="text-xs text-gray-500">December billing</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Dec 15, 2023</div>
+                                        <div class="text-xs text-gray-500">Due: Dec 22, 2023</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Professional Plan</div>
+                                        <div class="text-xs text-gray-500">Monthly subscription</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-sm text-accent hover:text-accent/80 font-medium mr-3">
+                                            <i class="fa-solid fa-download text-xs mr-1"></i>
+                                            Download
+                                        </button>
+                                        <button class="text-sm text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fa-regular fa-file-lines text-accent text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">INV-2023-1115</div>
+                                                <div class="text-xs text-gray-500">November billing</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Nov 15, 2023</div>
+                                        <div class="text-xs text-gray-500">Due: Nov 22, 2023</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Professional Plan</div>
+                                        <div class="text-xs text-gray-500">Monthly subscription</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-sm text-accent hover:text-accent/80 font-medium mr-3">
+                                            <i class="fa-solid fa-download text-xs mr-1"></i>
+                                            Download
+                                        </button>
+                                        <button class="text-sm text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fa-regular fa-file-lines text-accent text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">INV-2023-1015</div>
+                                                <div class="text-xs text-gray-500">October billing</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Oct 15, 2023</div>
+                                        <div class="text-xs text-gray-500">Due: Oct 22, 2023</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-900">Starter Plan</div>
+                                        <div class="text-xs text-gray-500">Monthly subscription</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-semibold text-gray-900">$29.00</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-200">Paid</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-sm text-accent hover:text-accent/80 font-medium mr-3">
+                                            <i class="fa-solid fa-download text-xs mr-1"></i>
+                                            Download
+                                        </button>
+                                        <button class="text-sm text-gray-500 hover:text-gray-700">
+                                            <i class="fa-solid fa-ellipsis-vertical text-xs"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
+                        <div class="text-sm text-gray-500">Showing 5 of 24 invoices</div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">Previous</button>
+                            <button class="px-3 py-1.5 text-sm text-white bg-accent rounded-lg">1</button>
+                            <button class="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">2</button>
+                            <button class="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">3</button>
+                            <button class="px-3 py-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="transaction-history" class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Transaction History</h2>
+                    <button class="text-sm text-accent hover:text-accent/80 font-medium">View All Transactions</button>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm divide-y divide-gray-100">
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-down text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Payment Received</div>
+                                    <div class="text-xs text-gray-500">Professional Plan - February 2024</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-emerald-600">+$49.00</div>
+                                <div class="text-xs text-gray-500">Feb 15, 2024 at 10:32 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-credit-card text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Card Charged</div>
+                                    <div class="text-xs text-gray-500">Visa ending in 4242</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                <div class="text-xs text-gray-500">Feb 15, 2024 at 10:32 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-down text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Payment Received</div>
+                                    <div class="text-xs text-gray-500">Professional Plan - January 2024</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-emerald-600">+$49.00</div>
+                                <div class="text-xs text-gray-500">Jan 15, 2024 at 09:15 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-credit-card text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Card Charged</div>
+                                    <div class="text-xs text-gray-500">Visa ending in 4242</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-gray-900">$49.00</div>
+                                <div class="text-xs text-gray-500">Jan 15, 2024 at 09:15 AM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-up text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Refund Issued</div>
+                                    <div class="text-xs text-gray-500">Duplicate charge reversal</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-purple-600">-$49.00</div>
+                                <div class="text-xs text-gray-500">Jan 10, 2024 at 02:45 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 hover:bg-gray-50 transition-colors">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-down text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Payment Received</div>
+                                    <div class="text-xs text-gray-500">Professional Plan - December 2023</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-semibold text-emerald-600">+$49.00</div>
+                                <div class="text-xs text-gray-500">Dec 15, 2023 at 11:20 AM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="spending-overview" class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Spending Overview</h2>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="col-span-2 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Monthly Spending Trend</h3>
+                                <p class="text-sm text-gray-500">Last 6 months billing history</p>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <div class="w-32 h-2 bg-neutral-200 rounded-full">
-                                    <div class="w-3/4 h-2 bg-accent-600 rounded-full"></div>
-                                </div>
-                                <span class="text-xs text-neutral-500">75%</span>
+                                <button class="px-3 py-1.5 text-xs text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all">6M</button>
+                                <button class="px-3 py-1.5 text-xs text-gray-600 hover:bg-gray-100 rounded-lg transition-all">1Y</button>
+                                <button class="px-3 py-1.5 text-xs text-gray-600 hover:bg-gray-100 rounded-lg transition-all">All</button>
                             </div>
                         </div>
+                        <div id="spending-chart" style="height: 300px;"></div>
                     </div>
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
-                        <div class="flex items-start justify-between mb-3">
-                            <div class="flex items-start space-x-4 flex-1">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-rocket text-green-600 text-lg"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">Payment Gateway Integration</h3>
-                                    <p class="text-sm text-neutral-600 mb-2">Implementing Stripe payment processing with subscription management...</p>
-                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span>Updated yesterday</span>
-                                        </span>
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-solid fa-user"></i>
-                                            <span>Michael Chen</span>
-                                        </span>
-                                        <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Review</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
-                            </button>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <div class="flex -space-x-2">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                            <span class="text-xs text-neutral-500">3 collaborators</span>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5 hover:shadow-lg transition-all cursor-pointer group">
-                        <div class="flex items-start justify-between mb-3">
-                            <div class="flex items-start space-x-4 flex-1">
-                                <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-puzzle-piece text-amber-600 text-lg"></i>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold text-neutral-900 mb-1 group-hover:text-accent-600 transition-colors">REST API v2 Documentation</h3>
-                                    <p class="text-sm text-neutral-600 mb-2">Comprehensive API documentation with authentication and rate limiting...</p>
-                                    <div class="flex items-center space-x-4 text-xs text-neutral-500">
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-regular fa-clock"></i>
-                                            <span>Updated 3 days ago</span>
-                                        </span>
-                                        <span class="flex items-center space-x-1">
-                                            <i class="fa-solid fa-user"></i>
-                                            <span>David Rodriguez</span>
-                                        </span>
-                                        <span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">In Progress</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                                <i class="fa-solid fa-ellipsis text-neutral-400"></i>
-                            </button>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex -space-x-2">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <div class="w-32 h-2 bg-neutral-200 rounded-full">
-                                    <div class="w-1/2 h-2 bg-accent-600 rounded-full"></div>
-                                </div>
-                                <span class="text-xs text-neutral-500">50%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div id="activity-sidebar" class="space-y-6">
-                <div id="templates-widget">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-neutral-900">Popular Templates</h2>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-10 h-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-mobile-screen-button text-blue-600"></i>
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                        <h3 class="text-base font-semibold text-gray-900 mb-6">Quick Stats</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-500">Total Spent (2024)</span>
+                                    <span class="text-sm font-semibold text-gray-900">$98.00</span>
                                 </div>
-                                <div class="flex-1">
-                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Mobile App</h4>
-                                    <p class="text-xs text-neutral-600">12 sections</p>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full" style="width: 33%"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-10 h-10 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-globe text-purple-600"></i>
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-500">Avg. Monthly</span>
+                                    <span class="text-sm font-semibold text-gray-900">$49.00</span>
                                 </div>
-                                <div class="flex-1">
-                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Web Platform</h4>
-                                    <p class="text-xs text-neutral-600">15 sections</p>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 82%"></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="bg-white rounded-xl border border-neutral-200 p-4 hover:shadow-lg transition-all cursor-pointer group">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-10 h-10 bg-gradient-to-br from-green-50 to-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fa-solid fa-rocket text-green-600"></i>
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-500">Next Invoice</span>
+                                    <span class="text-sm font-semibold text-gray-900">$49.00</span>
                                 </div>
-                                <div class="flex-1">
-                                    <h4 class="font-semibold text-neutral-900 text-sm group-hover:text-accent-600 transition-colors">Feature PRD</h4>
-                                    <p class="text-xs text-neutral-600">8 sections</p>
+                                <div class="w-full bg-gray-100 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm text-gray-500">Payment Success Rate</span>
+                                    <span class="text-sm font-semibold text-emerald-600">100%</span>
+                                </div>
+                                <div class="flex items-center text-xs text-gray-500 mt-1">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 mr-1"></i>
+                                    All payments processed successfully
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div id="activity-feed">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-neutral-900">Recent Activity</h2>
-                    </div>
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <section id="billing-preferences" class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Billing Preferences</h2>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Email Notifications</h3>
+                                <p class="text-sm text-gray-500">Manage your billing email preferences</p>
+                            </div>
+                        </div>
                         <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
-                                <div class="flex-1">
-                                    <p class="text-sm text-neutral-700"><span class="font-semibold">John Doe</span> completed <span class="font-semibold">Mobile App Redesign PRD</span></p>
-                                    <span class="text-xs text-neutral-500">2 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
-                                <div class="flex-1">
-                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Sarah Williams</span> updated <span class="font-semibold">Web Dashboard Enhancement</span></p>
-                                    <span class="text-xs text-neutral-500">5 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
-                                <div class="flex-1">
-                                    <p class="text-sm text-neutral-700"><span class="font-semibold">David Rodriguez</span> created <span class="font-semibold">API v2 Documentation</span></p>
-                                    <span class="text-xs text-neutral-500">1 day ago</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
-                                <div class="flex-1">
-                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Alex Johnson</span> commented on <span class="font-semibold">Payment Gateway Integration</span></p>
-                                    <span class="text-xs text-neutral-500">2 days ago</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="User" class="w-8 h-8 rounded-full flex-shrink-0">
-                                <div class="flex-1">
-                                    <p class="text-sm text-neutral-700"><span class="font-semibold">Emma Davis</span> shared <span class="font-semibold">Mobile App Template</span></p>
-                                    <span class="text-xs text-neutral-500">3 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="team-members">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-neutral-900">Team Members</h2>
-                        <button class="text-sm font-medium text-accent-600 hover:text-accent-700">
-                            <i class="fa-solid fa-plus mr-1"></i>Invite
-                        </button>
-                    </div>
-                    <div class="bg-white rounded-xl border border-neutral-200 p-5">
-                        <div class="space-y-3">
                             <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-10 h-10 rounded-full">
-                                    <div>
-                                        <div class="font-semibold text-sm text-neutral-900">John Doe</div>
-                                        <div class="text-xs text-neutral-500">Product Manager</div>
-                                    </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Invoice emails</div>
+                                    <div class="text-xs text-gray-500">Receive invoice when payment is processed</div>
                                 </div>
-                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <div class="w-11 h-6 bg-accent rounded-full relative cursor-pointer">
+                                    <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                </div>
                             </div>
                             <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-10 h-10 rounded-full">
-                                    <div>
-                                        <div class="font-semibold text-sm text-neutral-900">Sarah Williams</div>
-                                        <div class="text-xs text-neutral-500">UX Designer</div>
-                                    </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Payment reminders</div>
+                                    <div class="text-xs text-gray-500">Get notified 3 days before payment</div>
                                 </div>
-                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <div class="w-11 h-6 bg-accent rounded-full relative cursor-pointer">
+                                    <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                </div>
                             </div>
                             <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-10 h-10 rounded-full">
-                                    <div>
-                                        <div class="font-semibold text-sm text-neutral-900">David Rodriguez</div>
-                                        <div class="text-xs text-neutral-500">Tech Lead</div>
-                                    </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Payment failures</div>
+                                    <div class="text-xs text-gray-500">Alert me immediately if payment fails</div>
                                 </div>
-                                <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                                <div class="w-11 h-6 bg-accent rounded-full relative cursor-pointer">
+                                    <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                </div>
                             </div>
                             <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">Usage alerts</div>
+                                    <div class="text-xs text-gray-500">Notify when approaching usage limits</div>
+                                </div>
+                                <div class="w-11 h-6 bg-gray-200 rounded-full relative cursor-pointer">
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-base font-semibold text-gray-900 mb-1">Auto-renewal Settings</h3>
+                                <p class="text-sm text-gray-500">Configure automatic subscription renewal</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+                                <div class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-check-circle text-emerald-600 mt-0.5"></i>
                                     <div>
-                                        <div class="font-semibold text-sm text-neutral-900">Alex Johnson</div>
-                                        <div class="text-xs text-neutral-500">Developer</div>
+                                        <div class="text-sm font-medium text-emerald-900 mb-1">Auto-renewal enabled</div>
+                                        <div class="text-xs text-emerald-700">Your subscription will automatically renew on March 15, 2024</div>
                                     </div>
                                 </div>
-                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="text-sm font-medium text-gray-900 mb-2 block">Renewal frequency</label>
+                                    <select class="w-full px-4 py-2 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent">
+                                        <option>Monthly ($49/month)</option>
+                                        <option>Annually ($490/year - Save 16%)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-sm font-medium text-gray-900 mb-2 block">Payment method</label>
+                                    <select class="w-full px-4 py-2 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent">
+                                        <option>Visa ending in 4242 (Primary)</option>
+                                        <option>Mastercard ending in 8888</option>
+                                        <option>PayPal - john.doe@email.com</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="w-full px-4 py-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 transition-all">
+                                Disable Auto-renewal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tax-documents" class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900">Tax Documents</h2>
+                    <button class="text-sm text-accent hover:text-accent/80 font-medium">Request Tax Document</button>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
+                    <div class="p-6">
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                                        <i class="fa-regular fa-file-pdf text-red-500"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">PDF</span>
+                                </div>
+                                <div class="text-sm font-semibold text-gray-900 mb-1">2023 Tax Summary</div>
+                                <div class="text-xs text-gray-500 mb-3">Annual tax document</div>
+                                <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                                    <i class="fa-solid fa-download text-xs mr-1"></i>
+                                    Download
+                                </button>
+                            </div>
+
+                            <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                                        <i class="fa-regular fa-file-pdf text-red-500"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">PDF</span>
+                                </div>
+                                <div class="text-sm font-semibold text-gray-900 mb-1">Q4 2023 Statement</div>
+                                <div class="text-xs text-gray-500 mb-3">Quarterly summary</div>
+                                <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                                    <i class="fa-solid fa-download text-xs mr-1"></i>
+                                    Download
+                                </button>
+                            </div>
+
+                            <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                                        <i class="fa-regular fa-file-pdf text-red-500"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500">PDF</span>
+                                </div>
+                                <div class="text-sm font-semibold text-gray-900 mb-1">Q3 2023 Statement</div>
+                                <div class="text-xs text-gray-500 mb-3">Quarterly summary</div>
+                                <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                                    <i class="fa-solid fa-download text-xs mr-1"></i>
+                                    Download
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div id="projects-section" class="mb-8">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-neutral-900">Projects Overview</h2>
-                <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">Manage projects</a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-3 h-3 rounded-full bg-blue-500"></div>
-                            <h3 class="font-semibold text-neutral-900">Q1 Roadmap</h3>
+            <section id="support-resources" class="mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Billing Support & Resources</h2>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:border-accent transition-all cursor-pointer">
+                        <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-headset text-accent text-xl"></i>
                         </div>
-                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        <h3 class="text-base font-semibold text-gray-900 mb-2">Contact Support</h3>
+                        <p class="text-sm text-gray-500 mb-4">Get help with billing issues or questions from our support team</p>
+                        <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                            Contact Us <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
                         </button>
                     </div>
-                    <div class="mb-4">
-                        <div class="flex items-center justify-between text-sm mb-2">
-                            <span class="text-neutral-600">Progress</span>
-                            <span class="font-semibold text-neutral-900">65%</span>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:border-accent transition-all cursor-pointer">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-book text-purple-600 text-xl"></i>
                         </div>
-                        <div class="w-full h-2 bg-neutral-200 rounded-full">
-                            <div class="w-2/3 h-2 bg-blue-500 rounded-full"></div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex -space-x-2">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                        </div>
-                        <span class="text-neutral-600">12 PRDs</span>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-3 h-3 rounded-full bg-purple-500"></div>
-                            <h3 class="font-semibold text-neutral-900">Mobile Redesign</h3>
-                        </div>
-                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        <h3 class="text-base font-semibold text-gray-900 mb-2">Billing Guide</h3>
+                        <p class="text-sm text-gray-500 mb-4">Learn about our billing process, payment methods, and policies</p>
+                        <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                            Read Guide <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
                         </button>
                     </div>
-                    <div class="mb-4">
-                        <div class="flex items-center justify-between text-sm mb-2">
-                            <span class="text-neutral-600">Progress</span>
-                            <span class="font-semibold text-neutral-900">40%</span>
+
+                    <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:border-accent transition-all cursor-pointer">
+                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-circle-question text-orange-600 text-xl"></i>
                         </div>
-                        <div class="w-full h-2 bg-neutral-200 rounded-full">
-                            <div class="w-2/5 h-2 bg-purple-500 rounded-full"></div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex -space-x-2">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                        </div>
-                        <span class="text-neutral-600">8 PRDs</span>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg transition-all">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <h3 class="font-semibold text-neutral-900">API v2</h3>
-                        </div>
-                        <button class="w-8 h-8 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors">
-                            <i class="fa-solid fa-ellipsis text-neutral-400"></i>
+                        <h3 class="text-base font-semibold text-gray-900 mb-2">FAQ</h3>
+                        <p class="text-sm text-gray-500 mb-4">Find answers to common billing and payment related questions</p>
+                        <button class="text-sm text-accent hover:text-accent/80 font-medium">
+                            View FAQ <i class="fa-solid fa-arrow-right text-xs ml-1"></i>
                         </button>
                     </div>
-                    <div class="mb-4">
-                        <div class="flex items-center justify-between text-sm mb-2">
-                            <span class="text-neutral-600">Progress</span>
-                            <span class="font-semibold text-neutral-900">85%</span>
-                        </div>
-                        <div class="w-full h-2 bg-neutral-200 rounded-full">
-                            <div class="w-5/6 h-2 bg-green-500 rounded-full"></div>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <div class="flex -space-x-2">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" alt="User" class="w-6 h-6 rounded-full border-2 border-white">
-                        </div>
-                        <span class="text-neutral-600">4 PRDs</span>
-                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div id="insights-section" class="mb-8">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-neutral-900">Productivity Insights</h2>
-                <div class="flex items-center space-x-2">
-                    <button class="px-3 py-1.5 text-sm font-medium text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">Week</button>
-                    <button class="px-3 py-1.5 text-sm font-medium text-white bg-accent-600 rounded-lg">Month</button>
-                    <button class="px-3 py-1.5 text-sm font-medium text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">Year</button>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white rounded-xl border border-neutral-200 p-6">
-                    <h3 class="font-semibold text-neutral-900 mb-4">PRDs Created Over Time</h3>
-                    <div class="h-64 flex items-end justify-between space-x-2">
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 45%"></div>
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 60%"></div>
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 75%"></div>
-                        <div class="flex-1 bg-accent-600 rounded-t-lg hover:bg-accent-700 transition-colors cursor-pointer" style="height: 90%"></div>
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 55%"></div>
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 70%"></div>
-                        <div class="flex-1 bg-accent-100 rounded-t-lg hover:bg-accent-200 transition-colors cursor-pointer" style="height: 40%"></div>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 text-xs text-neutral-500">
-                        <span>Mon</span>
-                        <span>Tue</span>
-                        <span>Wed</span>
-                        <span>Thu</span>
-                        <span>Fri</span>
-                        <span>Sat</span>
-                        <span>Sun</span>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl border border-neutral-200 p-6">
-                    <h3 class="font-semibold text-neutral-900 mb-4">Document Status Distribution</h3>
-                    <div class="flex items-center justify-center h-64">
-                        <div class="relative w-48 h-48">
-                            <svg class="w-full h-full transform -rotate-90">
-                                <circle cx="96" cy="96" r="80" fill="none" stroke="#e5e5e5" stroke-width="32"></circle>
-                                <circle cx="96" cy="96" r="80" fill="none" stroke="#10b981" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="0" stroke-linecap="round"></circle>
-                                <circle cx="96" cy="96" r="80" fill="none" stroke="#f59e0b" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="167" stroke-linecap="round"></circle>
-                                <circle cx="96" cy="96" r="80" fill="none" stroke="#3b82f6" stroke-width="32" stroke-dasharray="335" stroke-dashoffset="251" stroke-linecap="round"></circle>
-                            </svg>
-                            <div class="absolute inset-0 flex items-center justify-center flex-col">
-                                <div class="text-3xl font-bold text-neutral-900">24</div>
-                                <div class="text-sm text-neutral-600">Total PRDs</div>
+            <section id="payment-security" class="mb-8">
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-8 text-white shadow-lg">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold">Secure Payment Processing</h3>
+                            </div>
+                            <p class="text-gray-300 mb-6 max-w-2xl">All transactions are encrypted and processed through industry-leading payment providers. Your payment information is never stored on our servers.</p>
+                            <div class="grid grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                        <i class="fa-solid fa-lock text-2xl text-emerald-400"></i>
+                                    </div>
+                                    <div class="text-sm font-medium">SSL Encrypted</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                        <i class="fa-solid fa-shield-check text-2xl text-emerald-400"></i>
+                                    </div>
+                                    <div class="text-sm font-medium">PCI Compliant</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                        <i class="fa-solid fa-user-shield text-2xl text-emerald-400"></i>
+                                    </div>
+                                    <div class="text-sm font-medium">Data Protected</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                        <i class="fa-solid fa-certificate text-2xl text-emerald-400"></i>
+                                    </div>
+                                    <div class="text-sm font-medium">Verified Secure</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-4 mt-4">
-                        <div class="text-center">
-                            <div class="flex items-center justify-center space-x-2 mb-1">
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                <span class="text-sm font-semibold text-neutral-900">16</span>
+                        <div class="ml-8">
+                            <div class="flex flex-col space-y-3">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Crect fill='%23fff' width='80' height='40' rx='4'/%3E%3Ctext x='40' y='25' font-family='Arial' font-size='12' fill='%23333' text-anchor='middle'%3EStripe%3C/text%3E%3C/svg%3E" alt="Stripe" class="h-10 opacity-90">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Crect fill='%23fff' width='80' height='40' rx='4'/%3E%3Ctext x='40' y='25' font-family='Arial' font-size='12' fill='%23003087' text-anchor='middle'%3EPayPal%3C/text%3E%3C/svg%3E" alt="PayPal" class="h-10 opacity-90">
                             </div>
-                            <div class="text-xs text-neutral-600">Completed</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center space-x-2 mb-1">
-                                <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
-                                <span class="text-sm font-semibold text-neutral-900">8</span>
-                            </div>
-                            <div class="text-xs text-neutral-600">In Progress</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center space-x-2 mb-1">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
-                                <span class="text-sm font-semibold text-neutral-900">3</span>
-                            </div>
-                            <div class="text-xs text-neutral-600">Review</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div id="tips-section" class="mb-8">
-            <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl border border-accent-200 p-8">
-                <div class="flex items-start justify-between">
-                    <div class="flex-1">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <i class="fa-solid fa-lightbulb text-accent-600 text-xl"></i>
-                            <h3 class="text-xl font-bold text-neutral-900">Pro Tip</h3>
-                        </div>
-                        <p class="text-neutral-700 mb-4 leading-relaxed">Use keyboard shortcuts to speed up your workflow. Press <kbd class="px-2 py-1 bg-white rounded border border-neutral-300 text-sm font-mono">Ctrl + K</kbd> to quickly search documents, or <kbd class="px-2 py-1 bg-white rounded border border-neutral-300 text-sm font-mono">Ctrl + N</kbd> to create a new PRD instantly.</p>
-                        <button class="text-accent-600 font-semibold text-sm hover:text-accent-700 transition-colors">
-                            View all shortcuts <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                    <button class="w-8 h-8 rounded-lg hover:bg-accent-200 flex items-center justify-center transition-colors">
-                        <i class="fa-solid fa-times text-accent-700"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="integrations-quick-access" class="mb-8">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-neutral-900">Quick Integrations</h2>
-                <a href="#" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all integrations</a>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-slack text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">Slack</span>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-jira text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">Jira</span>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-github text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">GitHub</span>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-trello text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">Trello</span>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-figma text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">Figma</span>
-                </button>
-                <button class="bg-white rounded-xl border border-neutral-200 p-6 hover:shadow-lg hover:border-accent-200 transition-all flex flex-col items-center justify-center space-y-2 group">
-                    <i class="fa-brands fa-google text-3xl text-neutral-700 group-hover:text-accent-600 transition-colors"></i>
-                    <span class="text-xs font-medium text-neutral-700">Drive</span>
-                </button>
-            </div>
         </div>
     </main>
 </div>
+
+<script>
+window.addEventListener('load', function() {
+    try {
+        const spendingData = [
+            { month: 'Sep', amount: 29 },
+            { month: 'Oct', amount: 29 },
+            { month: 'Nov', amount: 49 },
+            { month: 'Dec', amount: 49 },
+            { month: 'Jan', amount: 49 },
+            { month: 'Feb', amount: 49 }
+        ];
+
+        const trace = {
+            x: spendingData.map(d => d.month),
+            y: spendingData.map(d => d.amount),
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: {
+                color: '#0284c7',
+                width: 3,
+                shape: 'spline'
+            },
+            marker: {
+                color: '#0284c7',
+                size: 8,
+                line: {
+                    color: '#fff',
+                    width: 2
+                }
+            },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(2, 132, 199, 0.1)',
+            hovertemplate: '<b>%{x}</b><br>$%{y}<extra></extra>'
+        };
+
+        const layout = {
+            margin: { t: 20, r: 20, b: 40, l: 50 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                showgrid: true,
+                gridcolor: '#f3f4f6',
+                zeroline: false,
+                tickprefix: '$'
+            },
+            hovermode: 'x unified',
+            showlegend: false
+        };
+
+        const config = {
+            responsive: true,
+            displayModeBar: false,
+            displaylogo: false
+        };
+
+        Plotly.newPlot('spending-chart', [trace], layout, config);
+    } catch(e) {
+        document.getElementById('spending-chart').innerHTML = '<div class="flex items-center justify-center h-full text-gray-400"><i class="fa-solid fa-chart-line mr-2"></i>Chart unavailable</div>';
+    }
+});
+</script>
 
 </body>
 </html>

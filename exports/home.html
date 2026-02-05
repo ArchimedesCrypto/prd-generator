@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRD Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;}</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        accent: '#0284c7',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-white text-gray-900">
+
+<nav id="header" class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center space-x-12">
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-semibold tracking-tight">PRD Generator</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Features</a>
+                    <a href="#workflow" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Workflow</a>
+                    <a href="#templates" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Templates</a>
+                    <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
+                    <a href="#resources" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Resources</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Sign in</a>
+                <a href="#" class="bg-accent text-white text-sm font-medium px-4 py-2 rounded-xl hover:bg-accent/90 transition-all shadow-sm">Get started</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section id="hero-section" class="pt-32 pb-20 px-6 lg:px-8 h-[700px] flex items-center">
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 mb-8">
+                <span class="w-2 h-2 bg-accent rounded-full"></span>
+                <span class="text-sm font-medium text-gray-700">Introducing AI-powered PRD generation</span>
+            </div>
+            <h1 class="text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                Build better products<br/>with intelligent PRDs
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Transform your product ideas into comprehensive, structured PRDs in minutes. Built for modern product teams who move fast.
+            </p>
+            <div class="flex items-center justify-center space-x-4">
+                <a href="#" class="bg-accent text-white text-base font-medium px-6 py-3 rounded-xl hover:bg-accent/90 transition-all shadow-lg shadow-accent/20">
+                    Start writing for free
+                </a>
+                <a href="#" class="bg-white text-gray-700 text-base font-medium px-6 py-3 rounded-xl border border-gray-200 hover:border-gray-300 transition-all">
+                    Watch demo
+                    <i class="fa-solid fa-play ml-2 text-xs"></i>
+                </a>
+            </div>
+            <div class="mt-12 flex items-center justify-center space-x-8 text-sm text-gray-500">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span>No credit card required</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span>Free forever plan</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span>Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="product-preview" class="py-20 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-white rounded-xl shadow-2xl shadow-gray-200/50 border border-gray-200 overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-200 px-6 py-4 flex items-center space-x-3">
+                <div class="flex space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                </div>
+                <div class="flex-1 flex justify-center">
+                    <div class="bg-white border border-gray-200 rounded-lg px-4 py-1.5 text-sm text-gray-600 max-w-md w-full">
+                        app.prdgenerator.io/documents/new-mobile-feature
+                    </div>
+                </div>
+            </div>
+            <div class="p-12">
+                <div class="flex items-start space-x-8">
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-3 mb-8">
+                            <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-sparkles text-accent"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500">Product Requirement Document</h3>
+                                <h2 class="text-2xl font-semibold">New Mobile Checkout Flow</h2>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Overview</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed">Redesign the mobile checkout experience to reduce cart abandonment by 35% and increase conversion rates through a streamlined, one-page checkout process.</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                                <h4 class="text-sm font-semibold text-gray-900 mb-3">Success Metrics</h4>
+                                <div class="grid grid-cols-3 gap-4 mt-4">
+                                    <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                        <div class="text-2xl font-bold text-accent">35%</div>
+                                        <div class="text-xs text-gray-500 mt-1">Cart abandonment</div>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                        <div class="text-2xl font-bold text-accent">2.5s</div>
+                                        <div class="text-xs text-gray-500 mt-1">Load time</div>
+                                    </div>
+                                    <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                        <div class="text-2xl font-bold text-accent">4.8</div>
+                                        <div class="text-xs text-gray-500 mt-1">User rating</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-80 space-y-4">
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                            <div class="text-xs font-semibold text-gray-500 mb-3">Status</div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm font-medium">In Progress</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                            <div class="text-xs font-semibold text-gray-500 mb-3">Priority</div>
+                            <div class="inline-flex items-center bg-red-50 text-red-700 text-sm font-medium px-3 py-1 rounded-lg">
+                                <i class="fa-solid fa-flag mr-2 text-xs"></i>
+                                High
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                            <div class="text-xs font-semibold text-gray-500 mb-3">Owner</div>
+                            <div class="flex items-center space-x-2">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Owner" class="w-8 h-8 rounded-full">
+                                <div>
+                                    <div class="text-sm font-medium">Sarah Chen</div>
+                                    <div class="text-xs text-gray-500">Product Manager</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="value-props" class="py-24 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Why product teams choose us</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Everything you need to create world-class product documentation, faster than ever before.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div id="value-prop-1" class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-xl hover:shadow-gray-200/50 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-bolt text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Lightning fast</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">Generate comprehensive PRDs in minutes, not hours. Our AI understands context and creates structured documents instantly.</p>
+                <div class="flex items-center space-x-2 text-sm font-medium text-accent">
+                    <span>10x faster than manual writing</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </div>
+            <div id="value-prop-2" class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-xl hover:shadow-gray-200/50 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-brain text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">AI-powered intelligence</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">Smart suggestions for user stories, acceptance criteria, and edge cases based on industry best practices.</p>
+                <div class="flex items-center space-x-2 text-sm font-medium text-accent">
+                    <span>Built on GPT-4 architecture</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </div>
+            <div id="value-prop-3" class="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-xl hover:shadow-gray-200/50 transition-all">
+                <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <i class="fa-solid fa-users text-accent text-xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Built for collaboration</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">Real-time editing, comments, and version control. Keep your entire team aligned on product direction.</p>
+                <div class="flex items-center space-x-2 text-sm font-medium text-accent">
+                    <span>Unlimited team members</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="py-24 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Everything you need to ship faster</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Powerful features designed for modern product development workflows.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div id="feature-1" class="bg-white rounded-xl p-10 border border-gray-200">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-wand-magic-sparkles text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">AI Template Library</h3>
+                        <p class="text-gray-600 leading-relaxed">Choose from dozens of pre-built templates for different product types, industries, and use cases. Customize to match your workflow.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                    <div class="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                        <div class="text-sm font-medium text-gray-900">Feature Launch</div>
+                        <div class="text-xs text-gray-500 mt-1">Complete PRD template</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                        <div class="text-sm font-medium text-gray-900">API Design</div>
+                        <div class="text-xs text-gray-500 mt-1">Technical spec template</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                        <div class="text-sm font-medium text-gray-900">Mobile App</div>
+                        <div class="text-xs text-gray-500 mt-1">Platform-specific PRD</div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                        <div class="text-sm font-medium text-gray-900">Redesign</div>
+                        <div class="text-xs text-gray-500 mt-1">UX improvement doc</div>
+                    </div>
+                </div>
+            </div>
+            <div id="feature-2" class="bg-white rounded-xl p-10 border border-gray-200">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-chart-line text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Smart Analytics</h3>
+                        <p class="text-gray-600 leading-relaxed">Track document engagement, completion rates, and team velocity. Understand what's working and what needs improvement.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 mt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm font-medium text-gray-700">Document Health Score</span>
+                        <span class="text-2xl font-bold text-accent">92%</span>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Completeness</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-[95%] h-full bg-accent rounded-full"></div>
+                                </div>
+                                <span class="text-gray-900 font-medium">95%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Clarity</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-[88%] h-full bg-accent rounded-full"></div>
+                                </div>
+                                <span class="text-gray-900 font-medium">88%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-600">Feasibility</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-[93%] h-full bg-accent rounded-full"></div>
+                                </div>
+                                <span class="text-gray-900 font-medium">93%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="feature-3" class="bg-white rounded-xl p-10 border border-gray-200">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-code-branch text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Version Control</h3>
+                        <p class="text-gray-600 leading-relaxed">Track every change with automatic versioning. Compare versions, restore previous states, and maintain a complete audit trail.</p>
+                    </div>
+                </div>
+                <div class="space-y-3 mt-6">
+                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white text-xs font-bold">v3</div>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-gray-900">Updated success metrics</div>
+                            <div class="text-xs text-gray-500">2 hours ago by Sarah Chen</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="w-8 h-8 bg-gray-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">v2</div>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-gray-900">Added technical requirements</div>
+                            <div class="text-xs text-gray-500">Yesterday by Alex Kim</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="w-8 h-8 bg-gray-300 rounded-lg flex items-center justify-center text-white text-xs font-bold">v1</div>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-gray-900">Initial draft created</div>
+                            <div class="text-xs text-gray-500">3 days ago by Sarah Chen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="feature-4" class="bg-white rounded-xl p-10 border border-gray-200">
+                <div class="flex items-start space-x-4 mb-6">
+                    <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-plug text-accent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Seamless Integrations</h3>
+                        <p class="text-gray-600 leading-relaxed">Connect with your favorite tools. Sync with Jira, Linear, Notion, Slack, and 50+ other platforms your team already uses.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mt-6">
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-jira text-2xl text-blue-600"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-slack text-2xl text-purple-600"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-github text-2xl text-gray-900"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-figma text-2xl text-red-500"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-google text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-trello text-2xl text-blue-600"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center">
+                        <i class="fa-brands fa-confluence text-2xl text-blue-700"></i>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-100 flex items-center justify-center text-xs font-bold text-gray-400">+50</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="workflow" class="py-24 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">How it works</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">From idea to comprehensive PRD in three simple steps.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div id="workflow-step-1" class="relative">
+                <div class="bg-white border border-gray-200 rounded-xl p-8">
+                    <div class="w-12 h-12 bg-accent text-white rounded-xl flex items-center justify-center text-xl font-bold mb-6">1</div>
+                    <h3 class="text-2xl font-semibold mb-4">Describe your idea</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Tell us about your product feature in plain English. No need for complex formatting or structure.</p>
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                        <div class="text-xs font-medium text-gray-500 mb-2">Example input:</div>
+                        <div class="text-sm text-gray-700 italic">"We need a mobile checkout flow that reduces steps from 5 to 2 and supports Apple Pay..."</div>
+                    </div>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                    <i class="fa-solid fa-arrow-right text-accent text-2xl"></i>
+                </div>
+            </div>
+            <div id="workflow-step-2" class="relative">
+                <div class="bg-white border border-gray-200 rounded-xl p-8">
+                    <div class="w-12 h-12 bg-accent text-white rounded-xl flex items-center justify-center text-xl font-bold mb-6">2</div>
+                    <h3 class="text-2xl font-semibold mb-4">AI generates structure</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Our AI analyzes your input and creates a complete PRD with all standard sections automatically.</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fa-solid fa-check text-accent"></i>
+                            <span>Overview & objectives</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fa-solid fa-check text-accent"></i>
+                            <span>User stories & acceptance criteria</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fa-solid fa-check text-accent"></i>
+                            <span>Technical requirements</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-700">
+                            <i class="fa-solid fa-check text-accent"></i>
+                            <span>Success metrics & KPIs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                    <i class="fa-solid fa-arrow-right text-accent text-2xl"></i>
+                </div>
+            </div>
+            <div id="workflow-step-3">
+                <div class="bg-white border border-gray-200 rounded-xl p-8">
+                    <div class="w-12 h-12 bg-accent text-white rounded-xl flex items-center justify-center text-xl font-bold mb-6">3</div>
+                    <h3 class="text-2xl font-semibold mb-4">Refine & collaborate</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">Edit, comment, and iterate with your team in real-time. Export to any format when ready.</p>
+                    <div class="flex items-center space-x-2 mt-6">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Team member" class="w-8 h-8 rounded-full border-2 border-white">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Team member" class="w-8 h-8 rounded-full border-2 border-white -ml-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Team member" class="w-8 h-8 rounded-full border-2 border-white -ml-2">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" alt="Team member" class="w-8 h-8 rounded-full border-2 border-white -ml-2">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs font-medium text-gray-600 -ml-2">+5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="templates" class="py-24 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Start with a template</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Pre-built templates for every product scenario. Customize to fit your needs.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div id="template-1" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-mobile-screen-button text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Mobile App Feature</h3>
+                <p class="text-sm text-gray-600 mb-4">Complete PRD for iOS and Android features with platform-specific requirements.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">12 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-2" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-globe text-purple-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Web Application</h3>
+                <p class="text-sm text-gray-600 mb-4">Full-stack web app PRD with frontend, backend, and API specifications.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">15 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-3" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-code text-green-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">API Development</h3>
+                <p class="text-sm text-gray-600 mb-4">Technical spec for RESTful or GraphQL APIs with endpoints and schemas.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">10 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-4" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-palette text-orange-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">UX Redesign</h3>
+                <p class="text-sm text-gray-600 mb-4">Comprehensive redesign PRD with user research and design system updates.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">14 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-5" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-shield-halved text-red-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Security Feature</h3>
+                <p class="text-sm text-gray-600 mb-4">Security-focused PRD with compliance requirements and threat modeling.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">13 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-6" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-chart-simple text-indigo-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Analytics Dashboard</h3>
+                <p class="text-sm text-gray-600 mb-4">Data visualization PRD with metrics, KPIs, and reporting requirements.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">11 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-7" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-bell text-pink-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Notification System</h3>
+                <p class="text-sm text-gray-600 mb-4">Multi-channel notification PRD with email, push, and in-app messaging.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">9 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+            <div id="template-8" class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:shadow-gray-200/50 transition-all cursor-pointer">
+                <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-rocket text-cyan-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">MVP Launch</h3>
+                <p class="text-sm text-gray-600 mb-4">Minimum viable product PRD focused on core features and quick launch.</p>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-500">8 sections</span>
+                    <span class="text-accent font-medium">Use template →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="py-24 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Loved by product teams worldwide</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Join thousands of product managers who ship faster with PRD Generator.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div id="testimonial-1" class="bg-white border border-gray-200 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-6">"PRD Generator cut our documentation time by 75%. What used to take days now takes hours. The AI suggestions are incredibly accurate and save us from missing critical details."</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Sarah Chen" class="w-12 h-12 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900">Sarah Chen</div>
+                        <div class="text-sm text-gray-500">Senior PM at Stripe</div>
+                    </div>
+                </div>
+            </div>
+            <div id="testimonial-2" class="bg-white border border-gray-200 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-6">"The collaboration features are game-changing. Our entire product team can work on PRDs simultaneously, and the version control keeps everything organized. Best tool we've adopted this year."</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Marcus Rodriguez" class="w-12 h-12 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900">Marcus Rodriguez</div>
+                        <div class="text-sm text-gray-500">Head of Product at Notion</div>
+                    </div>
+                </div>
+            </div>
+            <div id="testimonial-3" class="bg-white border border-gray-200 rounded-xl p-8">
+                <div class="flex items-center space-x-1 mb-4">
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <i class="fa-solid fa-star text-yellow-400"></i>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-6">"As a startup, we needed to move fast without sacrificing quality. PRD Generator gives us enterprise-level documentation standards with a fraction of the effort. Absolutely essential."</p>
+                <div class="flex items-center space-x-3">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" alt="Emily Park" class="w-12 h-12 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900">Emily Park</div>
+                        <div class="text-sm text-gray-500">Founder at TechFlow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <div class="inline-flex items-center space-x-8 bg-gray-50 border border-gray-200 rounded-xl px-8 py-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-gray-900">12,000+</div>
+                    <div class="text-sm text-gray-600 mt-1">Active users</div>
+                </div>
+                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-gray-900">50,000+</div>
+                    <div class="text-sm text-gray-600 mt-1">PRDs created</div>
+                </div>
+                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-gray-900">4.9/5</div>
+                    <div class="text-sm text-gray-600 mt-1">Average rating</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="py-24 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Simple, transparent pricing</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Start free, upgrade when you need more. No hidden fees.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div id="pricing-free" class="bg-white border border-gray-200 rounded-xl p-8">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-2">Free</h3>
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">$0</span>
+                        <span class="text-gray-500 ml-2">/month</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6">Perfect for individuals and small projects.</p>
+                <a href="#" class="block w-full text-center bg-gray-100 text-gray-900 font-medium py-3 rounded-xl hover:bg-gray-200 transition-all mb-6">Get started</a>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">5 PRDs per month</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Basic AI templates</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Export to PDF & Markdown</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Community support</span>
+                    </div>
+                </div>
+            </div>
+            <div id="pricing-pro" class="bg-white border-2 border-accent rounded-xl p-8 relative">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-2">Pro</h3>
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">$29</span>
+                        <span class="text-gray-500 ml-2">/month</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6">For growing teams and power users.</p>
+                <a href="#" class="block w-full text-center bg-accent text-white font-medium py-3 rounded-xl hover:bg-accent/90 transition-all mb-6 shadow-lg shadow-accent/20">Start free trial</a>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Unlimited PRDs</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Advanced AI templates</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Real-time collaboration</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Version control</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">All integrations</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Priority support</span>
+                    </div>
+                </div>
+            </div>
+            <div id="pricing-enterprise" class="bg-white border border-gray-200 rounded-xl p-8">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-2">Enterprise</h3>
+                    <div class="flex items-baseline">
+                        <span class="text-4xl font-bold">Custom</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6">For large organizations with custom needs.</p>
+                <a href="#" class="block w-full text-center bg-gray-100 text-gray-900 font-medium py-3 rounded-xl hover:bg-gray-200 transition-all mb-6">Contact sales</a>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Everything in Pro</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Custom AI training</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">SSO & advanced security</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Dedicated account manager</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">Custom integrations</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-check text-accent mt-1"></i>
+                        <span class="text-sm text-gray-700">SLA guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="integrations-showcase" class="py-24 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Integrates with your stack</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Connect PRD Generator with the tools you already use every day.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-slack text-4xl text-purple-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Slack</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-jira text-4xl text-blue-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Jira</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-github text-4xl text-gray-900 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">GitHub</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-figma text-4xl text-red-500 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Figma</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-google text-4xl text-blue-500 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Google Workspace</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-trello text-4xl text-blue-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Trello</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-confluence text-4xl text-blue-700 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Confluence</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-microsoft text-4xl text-blue-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Microsoft 365</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-asana text-4xl text-red-400 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Asana</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-dropbox text-4xl text-blue-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">Dropbox</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-brands fa-gitlab text-4xl text-orange-600 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">GitLab</span>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center hover:shadow-lg hover:shadow-gray-200/50 transition-all">
+                <i class="fa-solid fa-plus text-4xl text-gray-400 mb-3"></i>
+                <span class="text-sm font-medium text-gray-700">50+ more</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="stats" class="py-24 px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="stat-1" class="text-center">
+                <div class="text-5xl font-bold text-accent mb-2">10x</div>
+                <div class="text-lg font-medium text-gray-900 mb-1">Faster documentation</div>
+                <div class="text-sm text-gray-600">Compared to manual writing</div>
+            </div>
+            <div id="stat-2" class="text-center">
+                <div class="text-5xl font-bold text-accent mb-2">95%</div>
+                <div class="text-lg font-medium text-gray-900 mb-1">Time saved</div>
+                <div class="text-sm text-gray-600">On average per PRD</div>
+            </div>
+            <div id="stat-3" class="text-center">
+                <div class="text-5xl font-bold text-accent mb-2">12k+</div>
+                <div class="text-lg font-medium text-gray-900 mb-1">Active teams</div>
+                <div class="text-sm text-gray-600">Trust PRD Generator</div>
+            </div>
+            <div id="stat-4" class="text-center">
+                <div class="text-5xl font-bold text-accent mb-2">4.9/5</div>
+                <div class="text-lg font-medium text-gray-900 mb-1">User satisfaction</div>
+                <div class="text-sm text-gray-600">Based on 2,000+ reviews</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-24 px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4">Frequently asked questions</h2>
+            <p class="text-xl text-gray-600">Everything you need to know about PRD Generator.</p>
+        </div>
+        <div class="space-y-4">
+            <div id="faq-1" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">How does the AI generate PRDs?</h3>
+                        <p class="text-gray-600 leading-relaxed">Our AI is trained on thousands of successful PRDs across different industries. It analyzes your input, understands context, and generates structured documentation following industry best practices. You can then refine and customize the output to match your specific needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-2" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I use my own templates?</h3>
+                        <p class="text-gray-600 leading-relaxed">Absolutely! While we provide comprehensive templates, you can create and save your own custom templates that match your organization's specific requirements and workflows. Pro and Enterprise plans include unlimited custom templates.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-3" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Is my data secure?</h3>
+                        <p class="text-gray-600 leading-relaxed">Yes. We use enterprise-grade encryption for data in transit and at rest. Your PRDs are private by default, and we never use your data to train our models. Enterprise customers get additional security features including SSO, custom data retention policies, and SOC 2 compliance.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-4" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">What integrations are available?</h3>
+                        <p class="text-gray-600 leading-relaxed">We integrate with 50+ tools including Jira, Linear, Notion, Slack, GitHub, Figma, and more. You can sync PRDs, create tasks automatically, and keep your entire team aligned. New integrations are added regularly based on user feedback.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-5" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Can I cancel anytime?</h3>
+                        <p class="text-gray-600 leading-relaxed">Yes, there are no long-term contracts. You can cancel your subscription at any time, and you'll continue to have access until the end of your billing period. You can also export all your PRDs before canceling.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="faq-6" class="bg-white border border-gray-200 rounded-xl p-6">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Do you offer educational discounts?</h3>
+                        <p class="text-gray-600 leading-relaxed">Yes! We offer 50% off Pro plans for students, educators, and non-profit organizations. Contact our sales team with proof of eligibility to get started with your discounted account.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="cta-final" class="py-24 px-6 lg:px-8 bg-gradient-to-br from-accent to-blue-600">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to ship faster?</h2>
+        <p class="text-xl text-blue-50 mb-10 max-w-2xl mx-auto">Join thousands of product teams who build better products with PRD Generator. Start free, no credit card required.</p>
+        <div class="flex items-center justify-center space-x-4">
+            <a href="#" class="bg-white text-accent text-base font-medium px-8 py-4 rounded-xl hover:bg-gray-50 transition-all shadow-xl">
+                Start writing for free
+            </a>
+            <a href="#" class="bg-transparent text-white text-base font-medium px-8 py-4 rounded-xl border-2 border-white hover:bg-white/10 transition-all">
+                Schedule a demo
+            </a>
+        </div>
+        <div class="mt-8 flex items-center justify-center space-x-8 text-sm text-blue-50">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-check"></i>
+                <span>Free forever plan</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-check"></i>
+                <span>No credit card required</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-check"></i>
+                <span>Cancel anytime</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer" class="bg-white border-t border-gray-200 py-16 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+            <div class="md:col-span-2">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-file-lines text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-semibold tracking-tight">PRD Generator</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed mb-6">Build better products with intelligent PRDs. Transform your product ideas into comprehensive documentation in minutes.</p>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fa-brands fa-twitter text-gray-700"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fa-brands fa-linkedin text-gray-700"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fa-brands fa-github text-gray-700"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
+                        <i class="fa-brands fa-youtube text-gray-700"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Product</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Features</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Templates</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Integrations</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Changelog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Resources</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Documentation</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">API Reference</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Community</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">About</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Careers</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-200 pt-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <p class="text-sm text-gray-600">© 2024 PRD Generator. All rights reserved.</p>
+                <div class="flex items-center space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Terms of Service</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
